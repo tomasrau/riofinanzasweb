@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RIO — Servicios Financieros</title>
+  <meta name="description" content="RIO Servicios Financieros — Inversiones, asesoría financiera, cambio de divisas y evaluación de proyectos inmobiliarios en San Miguel, Buenos Aires." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── VARIABLES ─────────────────────────────────── */
+    :root {
+      --blue:       #1A00D4;
+      --blue-dark:  #10008A;
+      --blue-light: #3D1FFF;
+      --blue-glow:  rgba(26, 0, 212, 0.18);
+      --white:      #FFFFFF;
+      --off-white:  #F5F6FA;
+      --grey:       #8A8FA8;
+      --dark:       #0D0D1A;
+      --dark-card:  #13132B;
+      --border:     rgba(26, 0, 212, 0.15);
+      --radius:     12px;
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ─── RESET ─────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--white);
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ─── SCROLLBAR ──────────────────────────────────── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--off-white); }
+    ::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 3px; }
+
+    /* ─── UTILITIES ──────────────────────────────────── */
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+    .section-label {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--blue);
+      margin-bottom: 16px;
+    }
+    .section-label::before {
+      content: ''; display: block;
+      width: 28px; height: 2px; background: var(--blue);
+    }
+    h2.section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 800; line-height: 1.1;
+      color: var(--dark);
+    }
+    h2.section-title span { color: var(--blue); }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--blue); color: var(--white);
+      padding: 14px 32px; border-radius: 50px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px; font-weight: 500;
+      border: none; cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 4px 24px rgba(26,0,212,0.3);
+    }
+    .btn-primary:hover {
+      background: var(--blue-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(26,0,212,0.4);
+    }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; color: var(--blue);
+      padding: 13px 32px; border-radius: 50px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px; font-weight: 500;
+      border: 2px solid var(--blue); cursor: pointer;
+      transition: var(--transition);
+    }
+    .btn-outline:hover {
+      background: var(--blue); color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    /* ─── NAVBAR ─────────────────────────────────────── */
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 20px 0;
+      transition: background var(--transition), box-shadow var(--transition), padding var(--transition);
+    }
+    #navbar.scrolled {
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 1px 0 var(--border);
+      padding: 14px 0;
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+    }
+    .nav-logo img {
+      height: 38px; width: auto;
+    }
+    .nav-logo-text {
+      font-family: 'Syne', sans-serif;
+      font-size: 18px; font-weight: 800;
+      color: var(--dark); letter-spacing: -0.01em;
+    }
+    .nav-logo-text span { color: var(--blue); }
+    nav ul {
+      display: flex; align-items: center; gap: 36px;
+    }
+    nav ul li a {
+      font-size: 14px; font-weight: 500;
+      color: var(--dark); position: relative;
+      transition: color var(--transition);
+    }
+    nav ul li a::after {
+      content: ''; position: absolute;
+      bottom: -3px; left: 0; right: 0;
+      height: 2px; background: var(--blue);
+      transform: scaleX(0); transition: transform var(--transition);
+    }
+    nav ul li a:hover { color: var(--blue); }
+    nav ul li a:hover::after { transform: scaleX(1); }
+    .nav-cta { margin-left: 8px; }
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 4px;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--dark); border-radius: 2px;
+      transition: var(--transition);
+    }
+    .mobile-menu {
+      display: none; position: fixed;
+      top: 70px; left: 0; right: 0;
+      background: var(--white); z-index: 99;
+      padding: 24px; border-bottom: 1px solid var(--border);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-menu ul { flex-direction: column; gap: 0; }
+    .mobile-menu ul li { border-bottom: 1px solid var(--off-white); }
+    .mobile-menu ul li a {
+      display: block; padding: 14px 0;
+      font-size: 16px;
+    }
+    .mobile-menu .btn-primary { margin-top: 16px; width: 100%; justify-content: center; }
+
+    /* ─── HERO ───────────────────────────────────────── */
+    #inicio {
+      position: relative; min-height: 100vh;
+      background: var(--dark);
+      display: flex; align-items: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 80% 50%, rgba(26,0,212,0.45) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 20% 80%, rgba(61,31,255,0.2) 0%, transparent 60%),
+        var(--dark);
+    }
+    .hero-grid {
+      position: absolute; inset: 0; opacity: 0.07;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.4) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.4) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-inner {
+      position: relative; z-index: 2;
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center; gap: 60px;
+      padding: 120px 0 80px;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(26,0,212,0.25); border: 1px solid rgba(26,0,212,0.4);
+      color: #A8B4FF; padding: 6px 16px; border-radius: 50px;
+      font-size: 12px; font-weight: 500; letter-spacing: 0.05em;
+      margin-bottom: 24px;
+    }
+    .hero-badge .dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: #6B8AFF;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.4); }
+    }
+    .hero-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.8rem, 5.5vw, 4.5rem);
+      font-weight: 800; line-height: 1.05;
+      color: var(--white); margin-bottom: 12px;
+    }
+    .hero-title .accent {
+      color: transparent;
+      -webkit-text-stroke: 2px rgba(255,255,255,0.5);
+    }
+    .hero-slogan {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      font-weight: 600; color: #A8B4FF;
+      letter-spacing: 0.02em; margin-bottom: 20px;
+    }
+    .hero-desc {
+      font-size: 16px; color: rgba(255,255,255,0.65);
+      line-height: 1.7; max-width: 480px; margin-bottom: 40px;
+    }
+    .hero-actions {
+      display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+    }
+    .btn-hero-outline {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; color: rgba(255,255,255,0.85);
+      padding: 13px 28px; border-radius: 50px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px; font-weight: 500;
+      border: 1.5px solid rgba(255,255,255,0.25); cursor: pointer;
+      transition: var(--transition);
+    }
+    .btn-hero-outline:hover {
+      border-color: rgba(255,255,255,0.6);
+      background: rgba(255,255,255,0.06);
+    }
+    .hero-stats {
+      display: flex; gap: 32px; margin-top: 48px;
+      padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .hero-stat-item {}
+    .hero-stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 28px; font-weight: 800;
+      color: var(--white);
+    }
+    .hero-stat-label {
+      font-size: 13px; color: rgba(255,255,255,0.5);
+      margin-top: 2px;
+    }
+    /* Hero right: floating card visual */
+    .hero-visual {
+      display: flex; justify-content: center; align-items: center;
+      position: relative;
+    }
+    .hero-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 24px;
+      padding: 36px;
+      backdrop-filter: blur(20px);
+      width: 100%; max-width: 380px;
+      animation: float 6s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-12px); }
+    }
+    .card-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 28px;
+    }
+    .card-logo { height: 36px; }
+    .card-tag {
+      background: rgba(26,0,212,0.35); color: #A8B4FF;
+      font-size: 11px; padding: 4px 12px; border-radius: 20px;
+      font-weight: 600; letter-spacing: 0.05em;
+    }
+    .card-services { display: flex; flex-direction: column; gap: 14px; }
+    .card-service-item {
+      display: flex; align-items: center; gap: 14px;
+      padding: 14px 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px;
+      transition: var(--transition);
+    }
+    .card-service-item:hover { background: rgba(26,0,212,0.15); border-color: rgba(26,0,212,0.3); }
+    .card-icon {
+      width: 36px; height: 36px; border-radius: 8px;
+      background: rgba(26,0,212,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; flex-shrink: 0;
+    }
+    .card-service-text {}
+    .card-service-name {
+      font-size: 13px; font-weight: 500; color: var(--white);
+    }
+    .card-service-sub {
+      font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 1px;
+    }
+    .card-arrow {
+      margin-left: auto; color: rgba(255,255,255,0.3); font-size: 16px;
+    }
+
+    /* ─── NOSOTROS ────────────────────────────────────── */
+    #nosotros {
+      padding: 100px 0;
+      background: var(--off-white);
+    }
+    .nosotros-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center; gap: 80px;
+    }
+    .nosotros-img-wrap {
+      position: relative;
+    }
+    .nosotros-img-bg {
+      width: 100%; aspect-ratio: 4/3;
+      background: var(--blue);
+      border-radius: 20px;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+    .nosotros-img-bg::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 30% 70%, rgba(255,255,255,0.08) 0%, transparent 60%);
+    }
+    .nosotros-img-bg img {
+      width: 55%; opacity: 0.9;
+    }
+    .nosotros-badge-float {
+      position: absolute;
+      bottom: -24px; right: -24px;
+      background: var(--white);
+      border-radius: 16px;
+      padding: 20px 24px;
+      box-shadow: 0 12px 48px rgba(0,0,0,0.12);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .badge-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      background: var(--blue); color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+    }
+    .badge-text-big {
+      font-family: 'Syne', sans-serif;
+      font-size: 22px; font-weight: 800; color: var(--dark);
+    }
+    .badge-text-small {
+      font-size: 12px; color: var(--grey); margin-top: 1px;
+    }
+    .nosotros-content {}
+    .nosotros-content p {
+      font-size: 16px; color: #444;
+      line-height: 1.75; margin-bottom: 16px;
+    }
+    .nosotros-values {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 16px; margin-top: 32px;
+    }
+    .value-item {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 20px;
+      border: 1px solid var(--border);
+      transition: var(--transition);
+    }
+    .value-item:hover {
+      border-color: var(--blue);
+      box-shadow: 0 4px 20px var(--blue-glow);
+      transform: translateY(-2px);
+    }
+    .value-icon { font-size: 22px; margin-bottom: 8px; }
+    .value-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 14px; font-weight: 700;
+      color: var(--dark); margin-bottom: 4px;
+    }
+    .value-desc { font-size: 13px; color: var(--grey); line-height: 1.5; }
+
+    /* ─── SERVICIOS ───────────────────────────────────── */
+    #servicios {
+      padding: 100px 0;
+      background: var(--dark);
+      position: relative; overflow: hidden;
+    }
+    .servicios-bg {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 50% 50% at 90% 10%, rgba(26,0,212,0.25) 0%, transparent 60%);
+    }
+    .servicios-header {
+      text-align: center; margin-bottom: 64px; position: relative; z-index: 2;
+    }
+    .servicios-header .section-label { justify-content: center; }
+    .servicios-header .section-label::before { display: none; }
+    .servicios-header h2 { color: var(--white); }
+    .servicios-header p {
+      font-size: 17px; color: rgba(255,255,255,0.55);
+      max-width: 520px; margin: 16px auto 0; line-height: 1.7;
+    }
+    .servicios-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px; position: relative; z-index: 2;
+    }
+    .servicio-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px; padding: 36px;
+      transition: var(--transition);
+      position: relative; overflow: hidden;
+    }
+    .servicio-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 3px; background: var(--blue);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform var(--transition);
+    }
+    .servicio-card:hover {
+      background: rgba(26,0,212,0.1);
+      border-color: rgba(26,0,212,0.35);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(26,0,212,0.2);
+    }
+    .servicio-card:hover::before { transform: scaleX(1); }
+    .servicio-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 11px; font-weight: 700;
+      color: rgba(26,0,212,0.8); letter-spacing: 0.15em;
+      margin-bottom: 16px;
+    }
+    .servicio-icon {
+      width: 56px; height: 56px; border-radius: 14px;
+      background: rgba(26,0,212,0.2);
+      border: 1px solid rgba(26,0,212,0.35);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; margin-bottom: 20px;
+    }
+    .servicio-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 20px; font-weight: 700;
+      color: var(--white); margin-bottom: 12px;
+    }
+    .servicio-desc {
+      font-size: 15px; color: rgba(255,255,255,0.5);
+      line-height: 1.7;
+    }
+    .servicio-tags {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px;
+    }
+    .servicio-tag {
+      background: rgba(26,0,212,0.2); color: #A8B4FF;
+      font-size: 11px; padding: 4px 12px; border-radius: 20px;
+      font-weight: 500;
+    }
+    /* featured card */
+    .servicio-card.featured {
+      grid-column: 1 / -1;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 40px; align-items: center;
+      background: rgba(26,0,212,0.12);
+      border-color: rgba(26,0,212,0.3);
+    }
+    .servicio-card.featured .servicio-body {}
+    .servicio-card.featured .servicio-visual {
+      display: flex; justify-content: center; align-items: center;
+    }
+    .re-chart {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px; padding: 20px;
+      width: 100%; max-width: 280px;
+    }
+    .re-chart-label { font-size: 11px; color: rgba(255,255,255,0.4); margin-bottom: 12px; }
+    .re-bars {
+      display: flex; align-items: flex-end; gap: 8px;
+      height: 80px;
+    }
+    .re-bar {
+      flex: 1; border-radius: 4px 4px 0 0;
+      background: rgba(26,0,212,0.4);
+      transition: background var(--transition);
+    }
+    .re-bar.active { background: var(--blue); }
+    .re-chart:hover .re-bar { background: rgba(26,0,212,0.3); }
+    .re-chart:hover .re-bar.active { background: var(--blue-light); }
+    .re-chart-footer { font-size: 12px; color: #A8B4FF; margin-top: 10px; }
+
+    /* ─── POR QUÉ ELEGIRNOS ───────────────────────────── */
+    #porque {
+      padding: 100px 0;
+      background: var(--white);
+    }
+    .porque-header { text-align: center; margin-bottom: 64px; }
+    .porque-header .section-label { justify-content: center; }
+    .porque-header .section-label::before { display: none; }
+    .porque-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .porque-item {
+      padding: 32px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: var(--white);
+      transition: var(--transition);
+      position: relative; overflow: hidden;
+    }
+    .porque-item::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 3px; background: var(--blue);
+      transform: scaleX(0);
+      transition: transform var(--transition);
+    }
+    .porque-item:hover {
+      box-shadow: 0 8px 40px var(--blue-glow);
+      border-color: var(--blue);
+      transform: translateY(-4px);
+    }
+    .porque-item:hover::after { transform: scaleX(1); }
+    .porque-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 48px; font-weight: 800;
+      color: var(--blue); opacity: 0.12;
+      line-height: 1; margin-bottom: 12px;
+    }
+    .porque-icon {
+      width: 52px; height: 52px; border-radius: 12px;
+      background: var(--blue); color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; margin-bottom: 20px;
+    }
+    .porque-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 18px; font-weight: 700;
+      color: var(--dark); margin-bottom: 10px;
+    }
+    .porque-desc {
+      font-size: 15px; color: #555; line-height: 1.7;
+    }
+
+    /* ─── FAQ ────────────────────────────────────────── */
+    #faq {
+      padding: 100px 0;
+      background: var(--off-white);
+    }
+    .faq-layout {
+      display: grid; grid-template-columns: 1fr 1.6fr;
+      gap: 80px; align-items: start;
+    }
+    .faq-left {}
+    .faq-left p {
+      font-size: 16px; color: #555; line-height: 1.7;
+      margin-top: 16px; margin-bottom: 32px;
+    }
+    .faq-list { display: flex; flex-direction: column; gap: 12px; }
+    .faq-item {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: box-shadow var(--transition);
+    }
+    .faq-item.open {
+      box-shadow: 0 4px 24px var(--blue-glow);
+      border-color: var(--blue);
+    }
+    .faq-question {
+      width: 100%; background: none; border: none; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 24px; text-align: left;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px; font-weight: 500; color: var(--dark);
+      transition: color var(--transition);
+    }
+    .faq-item.open .faq-question { color: var(--blue); }
+    .faq-icon {
+      flex-shrink: 0; width: 24px; height: 24px;
+      border-radius: 50%; border: 1.5px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; color: var(--grey);
+      transition: transform var(--transition), border-color var(--transition), color var(--transition);
+    }
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+      border-color: var(--blue); color: var(--blue);
+    }
+    .faq-answer {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .faq-answer-inner {
+      padding: 0 24px 20px;
+      font-size: 15px; color: #555; line-height: 1.75;
+    }
+
+    /* ─── CONTACTO ────────────────────────────────────── */
+    #contacto {
+      padding: 100px 0;
+      background: var(--dark);
+      position: relative; overflow: hidden;
+    }
+    .contacto-bg {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 50% 60% at 10% 90%, rgba(26,0,212,0.25) 0%, transparent 60%);
+    }
+    .contacto-inner {
+      position: relative; z-index: 2;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: start;
+    }
+    .contacto-left {}
+    .contacto-left .section-label { color: #A8B4FF; }
+    .contacto-left .section-label::before { background: #A8B4FF; }
+    .contacto-left h2 { color: var(--white); margin-bottom: 16px; }
+    .contacto-left p {
+      font-size: 16px; color: rgba(255,255,255,0.55);
+      line-height: 1.75; margin-bottom: 40px;
+    }
+    .contacto-info { display: flex; flex-direction: column; gap: 20px; }
+    .info-item {
+      display: flex; align-items: center; gap: 16px;
+    }
+    .info-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      background: rgba(26,0,212,0.25);
+      border: 1px solid rgba(26,0,212,0.4);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+    }
+    .info-label { font-size: 12px; color: rgba(255,255,255,0.4); margin-bottom: 2px; }
+    .info-value { font-size: 15px; color: var(--white); font-weight: 500; }
+    /* Form */
+    .contacto-form {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 24px; padding: 40px;
+    }
+    .form-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 20px; font-weight: 700;
+      color: var(--white); margin-bottom: 28px;
+    }
+    .form-group { margin-bottom: 18px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group label {
+      display: block; font-size: 13px; font-weight: 500;
+      color: rgba(255,255,255,0.6); margin-bottom: 8px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px; padding: 14px 16px;
+      outline: none; transition: border-color var(--transition), background var(--transition);
+      -webkit-appearance: none;
+    }
+    .form-group select option { background: var(--dark-card); color: var(--white); }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: rgba(255,255,255,0.25); }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--blue);
+      background: rgba(26,0,212,0.1);
+    }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-submit {
+      width: 100%; margin-top: 8px;
+      padding: 16px;
+      background: var(--blue); color: var(--white);
+      border: none; border-radius: 50px;
+      font-family: 'Syne', sans-serif;
+      font-size: 16px; font-weight: 700;
+      cursor: pointer; transition: var(--transition);
+      box-shadow: 0 4px 24px rgba(26,0,212,0.4);
+    }
+    .form-submit:hover {
+      background: var(--blue-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(26,0,212,0.5);
+    }
+    .form-note {
+      text-align: center; font-size: 12px;
+      color: rgba(255,255,255,0.3); margin-top: 14px;
+    }
+    .form-success {
+      display: none; text-align: center; padding: 24px;
+    }
+    .form-success .check {
+      font-size: 48px; margin-bottom: 12px;
+    }
+    .form-success p {
+      color: rgba(255,255,255,0.7); font-size: 15px; line-height: 1.6;
+    }
+    .form-success strong { color: var(--white); }
+
+    /* ─── FOOTER ──────────────────────────────────────── */
+    footer {
+      background: var(--dark-card);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 48px 0 32px;
+    }
+    .footer-top {
+      display: grid; grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px; margin-bottom: 40px;
+    }
+    .footer-brand img { height: 32px; margin-bottom: 16px; }
+    .footer-brand-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 20px; font-weight: 800; color: var(--white);
+      margin-bottom: 4px;
+    }
+    .footer-brand-sub {
+      font-size: 12px; color: rgba(255,255,255,0.35);
+      letter-spacing: 0.12em; text-transform: uppercase;
+    }
+    .footer-brand p {
+      font-size: 14px; color: rgba(255,255,255,0.4);
+      line-height: 1.7; margin-top: 16px; max-width: 300px;
+    }
+    .footer-col-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 13px; font-weight: 700;
+      color: rgba(255,255,255,0.6); letter-spacing: 0.1em;
+      text-transform: uppercase; margin-bottom: 20px;
+    }
+    .footer-links { display: flex; flex-direction: column; gap: 12px; }
+    .footer-links a {
+      font-size: 14px; color: rgba(255,255,255,0.45);
+      transition: color var(--transition);
+    }
+    .footer-links a:hover { color: var(--white); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 28px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-copy { font-size: 13px; color: rgba(255,255,255,0.3); }
+    .footer-legal { display: flex; gap: 24px; }
+    .footer-legal a { font-size: 13px; color: rgba(255,255,255,0.3); transition: color var(--transition); }
+    .footer-legal a:hover { color: rgba(255,255,255,0.7); }
+
+    /* ─── SCROLL ANIMATIONS ───────────────────────────── */
+    .reveal {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ─── RESPONSIVE ──────────────────────────────────── */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; padding: 110px 0 60px; }
+      .hero-visual { display: none; }
+      .hero-stats { gap: 20px; }
+      .nosotros-grid { grid-template-columns: 1fr; gap: 48px; }
+      .nosotros-badge-float { right: 0; bottom: -20px; }
+      .servicios-grid { grid-template-columns: 1fr; }
+      .servicio-card.featured { grid-column: 1; display: block; }
+      .servicio-card.featured .servicio-visual { margin-top: 24px; }
+      .porque-grid { grid-template-columns: 1fr; gap: 16px; }
+      .faq-layout { grid-template-columns: 1fr; gap: 40px; }
+      .contacto-inner { grid-template-columns: 1fr; gap: 48px; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+      nav ul, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+    }
+    @media (max-width: 560px) {
+      .form-row { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+      .nosotros-values { grid-template-columns: 1fr; }
+      .hero-stats { flex-direction: column; gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════ NAVBAR ═══════════ -->
+  <header id="navbar">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="#inicio" class="nav-logo">
+          <!-- Reemplazar src con la ruta real del logo en tu repo -->
+          <img src="images/logo.png" alt="RIO" class="nav-logo-img" onerror="this.style.display='none'" />
+          <span class="nav-logo-text">RIO <span>Servicios Financieros</span></span>
+        </a>
+        <nav>
+          <ul>
+            <li><a href="#nosotros">Nosotros</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#porque">Por qué elegirnos</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </nav>
+        <a href="#contacto" class="btn-primary nav-cta">Contactar →</a>
+        <button class="hamburger" id="hamburger" aria-label="Menú">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="#nosotros" class="mobile-link">Nosotros</a></li>
+      <li><a href="#servicios" class="mobile-link">Servicios</a></li>
+      <li><a href="#porque" class="mobile-link">Por qué elegirnos</a></li>
+      <li><a href="#faq" class="mobile-link">FAQ</a></li>
+      <li><a href="#contacto" class="mobile-link">Contacto</a></li>
+    </ul>
+    <a href="#contacto" class="btn-primary mobile-link">Contactar →</a>
+  </div>
+
+  <!-- ═══════════ HERO ═══════════ -->
+  <section id="inicio">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="dot"></span>
+            San Miguel, Buenos Aires
+          </div>
+          <h1 class="hero-title">
+            Tu capital,<br>
+            nuestra<br>
+            <span class="accent">dirección.</span>
+          </h1>
+          <p class="hero-slogan">Decisiones inteligentes, resultados reales.</p>
+          <p class="hero-desc">
+            Asesoramos personas y empresas en la gestión de inversiones, cambio de divisas y evaluación de proyectos inmobiliarios con criterio profesional y enfoque personalizado.
+          </p>
+          <div class="hero-actions">
+            <a href="#contacto" class="btn-primary">Quiero una consulta →</a>
+            <a href="#servicios" class="btn-hero-outline">Ver servicios</a>
+          </div>
+          <div class="hero-stats">
+            <div class="hero-stat-item">
+              <div class="hero-stat-num">100%</div>
+              <div class="hero-stat-label">Atención personalizada</div>
+            </div>
+            <div class="hero-stat-item">
+              <div class="hero-stat-num">4</div>
+              <div class="hero-stat-label">Servicios especializados</div>
+            </div>
+            <div class="hero-stat-item">
+              <div class="hero-stat-num">ARG</div>
+              <div class="hero-stat-label">GBA · CABA</div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-card">
+            <div class="card-header">
+              <img src="images/logo-white.png" class="card-logo" alt="RIO" onerror="this.style.display='none'" />
+              <span class="card-tag">SERVICIOS</span>
+            </div>
+            <div class="card-services">
+              <div class="card-service-item">
+                <div class="card-icon">📈</div>
+                <div class="card-service-text">
+                  <div class="card-service-name">Inversiones</div>
+                  <div class="card-service-sub">Portafolios personalizados</div>
+                </div>
+                <span class="card-arrow">→</span>
+              </div>
+              <div class="card-service-item">
+                <div class="card-icon">💱</div>
+                <div class="card-service-text">
+                  <div class="card-service-name">Cambio de divisas</div>
+                  <div class="card-service-sub">USD · EUR · BRL</div>
+                </div>
+                <span class="card-arrow">→</span>
+              </div>
+              <div class="card-service-item">
+                <div class="card-icon">🏢</div>
+                <div class="card-service-text">
+                  <div class="card-service-name">Real Estate</div>
+                  <div class="card-service-sub">Viabilidad de proyectos</div>
+                </div>
+                <span class="card-arrow">→</span>
+              </div>
+              <div class="card-service-item">
+                <div class="card-icon">📊</div>
+                <div class="card-service-text">
+                  <div class="card-service-name">Asesoría financiera</div>
+                  <div class="card-service-sub">Contable y estratégica</div>
+                </div>
+                <span class="card-arrow">→</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ NOSOTROS ═══════════ -->
+  <section id="nosotros">
+    <div class="container">
+      <div class="nosotros-grid">
+        <div class="nosotros-img-wrap reveal">
+          <div class="nosotros-img-bg">
+            <img src="images/logo-white.png" alt="RIO" onerror="this.style.display='none'" />
+          </div>
+          <div class="nosotros-badge-float">
+            <div class="badge-icon">🏦</div>
+            <div>
+              <div class="badge-text-big">RIO</div>
+              <div class="badge-text-small">Servicios Financieros</div>
+            </div>
+          </div>
+        </div>
+        <div class="nosotros-content reveal reveal-delay-2">
+          <span class="section-label">Quiénes somos</span>
+          <h2 class="section-title">Expertos que <span>trabajan</span> para tu patrimonio</h2>
+          <p>
+            En RIO Servicios Financieros acompañamos a nuestros clientes en cada decisión que impacta su patrimonio. Somos un equipo de profesionales con experiencia en mercados financieros, inversiones y real estate, orientados al resultado y a la relación de largo plazo.
+          </p>
+          <p>
+            Operamos en San Miguel y el Gran Buenos Aires, atendiendo tanto a inversores individuales como a empresas que buscan optimizar su estructura financiera y evaluar nuevas oportunidades de negocio.
+          </p>
+          <div class="nosotros-values">
+            <div class="value-item">
+              <div class="value-icon">🎯</div>
+              <div class="value-title">Foco en resultados</div>
+              <div class="value-desc">Cada estrategia se diseña para maximizar tu retorno.</div>
+            </div>
+            <div class="value-item">
+              <div class="value-icon">🔒</div>
+              <div class="value-title">Confidencialidad</div>
+              <div class="value-desc">Tu información y tu patrimonio, protegidos siempre.</div>
+            </div>
+            <div class="value-item">
+              <div class="value-icon">🤝</div>
+              <div class="value-title">Trato personalizado</div>
+              <div class="value-desc">No somos un banco. Te conocemos y te asesoramos de verdad.</div>
+            </div>
+            <div class="value-item">
+              <div class="value-icon">📡</div>
+              <div class="value-title">Análisis de mercado</div>
+              <div class="value-desc">Información actualizada para decisiones oportunas.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SERVICIOS ═══════════ -->
+  <section id="servicios">
+    <div class="servicios-bg"></div>
+    <div class="container">
+      <div class="servicios-header reveal">
+        <span class="section-label">Lo que hacemos</span>
+        <h2 class="section-title" style="color:var(--white);">Nuestros <span>servicios</span></h2>
+        <p>Soluciones financieras integrales, adaptadas a tu perfil y tus objetivos.</p>
+      </div>
+      <div class="servicios-grid">
+        <div class="servicio-card reveal">
+          <div class="servicio-num">01</div>
+          <div class="servicio-icon">📈</div>
+          <div class="servicio-title">Inversiones y Portafolios</div>
+          <p class="servicio-desc">
+            Diseñamos estrategias de inversión personalizadas según tu perfil de riesgo y horizonte temporal. Accedemos a instrumentos del mercado local e internacional para hacer crecer tu capital de manera ordenada y consistente.
+          </p>
+          <div class="servicio-tags">
+            <span class="servicio-tag">Fondos comunes</span>
+            <span class="servicio-tag">Acciones & bonos</span>
+            <span class="servicio-tag">Diversificación</span>
+          </div>
+        </div>
+        <div class="servicio-card reveal reveal-delay-1">
+          <div class="servicio-num">02</div>
+          <div class="servicio-icon">💱</div>
+          <div class="servicio-title">Cambio de Divisas</div>
+          <p class="servicio-desc">
+            Operamos cambio de dólares, euros y reales con agilidad, transparencia y el mejor tipo de cambio disponible. Ideal para proteger tu ahorro ante la volatilidad del mercado local.
+          </p>
+          <div class="servicio-tags">
+            <span class="servicio-tag">USD</span>
+            <span class="servicio-tag">EUR</span>
+            <span class="servicio-tag">BRL</span>
+            <span class="servicio-tag">Operaciones seguras</span>
+          </div>
+        </div>
+        <div class="servicio-card reveal reveal-delay-2">
+          <div class="servicio-num">03</div>
+          <div class="servicio-icon">📊</div>
+          <div class="servicio-title">Asesoría Financiera & Contable</div>
+          <p class="servicio-desc">
+            Analizamos tu situación financiera y te brindamos un plan claro: optimización de gastos, estructura de ingresos, planificación fiscal y estrategias para alcanzar tus metas en el menor tiempo posible.
+          </p>
+          <div class="servicio-tags">
+            <span class="servicio-tag">Planificación patrimonial</span>
+            <span class="servicio-tag">Asesoría contable</span>
+          </div>
+        </div>
+        <div class="servicio-card featured reveal">
+          <div class="servicio-body">
+            <div class="servicio-num">04</div>
+            <div class="servicio-icon">🏢</div>
+            <div class="servicio-title">Evaluación de Proyectos de Real Estate</div>
+            <p class="servicio-desc">
+              Analizamos la viabilidad financiera de proyectos de inversión inmobiliaria: flujo de caja, TIR, VAN, análisis de riesgo y escenarios. Te ayudamos a tomar decisiones informadas antes de comprometer tu capital en un proyecto.
+            </p>
+            <div class="servicio-tags">
+              <span class="servicio-tag">TIR · VAN</span>
+              <span class="servicio-tag">Flujo de caja</span>
+              <span class="servicio-tag">Análisis de riesgo</span>
+              <span class="servicio-tag">Due diligence</span>
+            </div>
+          </div>
+          <div class="servicio-visual">
+            <div class="re-chart">
+              <div class="re-chart-label">Proyección de retorno estimado</div>
+              <div class="re-bars">
+                <div class="re-bar" style="height:35%"></div>
+                <div class="re-bar" style="height:50%"></div>
+                <div class="re-bar" style="height:45%"></div>
+                <div class="re-bar active" style="height:70%"></div>
+                <div class="re-bar" style="height:65%"></div>
+                <div class="re-bar active" style="height:90%"></div>
+                <div class="re-bar" style="height:80%"></div>
+              </div>
+              <div class="re-chart-footer">↑ Análisis personalizado por proyecto</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ POR QUÉ ELEGIRNOS ═══════════ -->
+  <section id="porque">
+    <div class="container">
+      <div class="porque-header reveal">
+        <span class="section-label">Nuestra diferencia</span>
+        <h2 class="section-title">¿Por qué elegir <span>RIO</span>?</h2>
+      </div>
+      <div class="porque-grid">
+        <div class="porque-item reveal">
+          <div class="porque-num">01</div>
+          <div class="porque-icon">🧭</div>
+          <div class="porque-title">Asesoramiento independiente</div>
+          <p class="porque-desc">No estamos atados a ningún banco ni entidad. Recomendamos lo que realmente conviene para tus objetivos, sin conflictos de interés.</p>
+        </div>
+        <div class="porque-item reveal reveal-delay-1">
+          <div class="porque-num">02</div>
+          <div class="porque-icon">⚡</div>
+          <div class="porque-title">Respuesta ágil</div>
+          <p class="porque-desc">El mercado no espera. Nuestro equipo responde rápido y opera con eficiencia para que no pierdas oportunidades por burocracia.</p>
+        </div>
+        <div class="porque-item reveal reveal-delay-2">
+          <div class="porque-num">03</div>
+          <div class="porque-icon">🌐</div>
+          <div class="porque-title">Visión integral</div>
+          <p class="porque-desc">Combinamos análisis financiero, perspectiva de mercado y conocimiento del contexto argentino para darte una visión completa y accionable.</p>
+        </div>
+        <div class="porque-item reveal reveal-delay-1">
+          <div class="porque-num">04</div>
+          <div class="porque-icon">🏆</div>
+          <div class="porque-title">Experiencia probada</div>
+          <p class="porque-desc">Nuestros profesionales cuentan con sólida trayectoria en inversiones, real estate y mercado de capitales en el contexto argentino y regional.</p>
+        </div>
+        <div class="porque-item reveal reveal-delay-2">
+          <div class="porque-num">05</div>
+          <div class="porque-icon">📱</div>
+          <div class="porque-title">Accesibilidad total</div>
+          <p class="porque-desc">Te atendemos de forma presencial en San Miguel o de manera remota. Tu asesor disponible cuando lo necesitás.</p>
+        </div>
+        <div class="porque-item reveal reveal-delay-3">
+          <div class="porque-num">06</div>
+          <div class="porque-icon">🔍</div>
+          <div class="porque-title">Transparencia total</div>
+          <p class="porque-desc">Tarifas claras, sin letra chica. Sabés exactamente qué pagás y qué recibís a cambio antes de comprometerte con cualquier servicio.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ FAQ ═══════════ -->
+  <section id="faq">
+    <div class="container">
+      <div class="faq-layout">
+        <div class="faq-left reveal">
+          <span class="section-label">Preguntas frecuentes</span>
+          <h2 class="section-title">Todo lo que querías <span>saber</span></h2>
+          <p>Respondemos las dudas más comunes de nuestros clientes. Si no encontrás lo que buscás, escribinos.</p>
+          <a href="#contacto" class="btn-primary">Hacer una consulta →</a>
+        </div>
+        <div class="faq-list reveal reveal-delay-2">
+          <div class="faq-item">
+            <button class="faq-question">
+              ¿Necesito tener mucho dinero para comenzar a invertir?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">No. En RIO trabajamos con diferentes perfiles de inversores. Existen opciones desde montos accesibles, y lo importante es definir tus objetivos y horizonte de tiempo para elegir el instrumento adecuado. Te asesoramos sin importar el monto inicial.</div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              ¿Cómo funciona el cambio de divisas?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">Operamos de manera transparente y segura. Nos contactás, te cotizamos el tipo de cambio para tu operación y coordinamos la transacción de forma rápida. Trabajamos con dólares, euros y reales brasileños.</div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              ¿Qué incluye la evaluación de viabilidad de un proyecto inmobiliario?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">Incluye análisis de flujo de caja, cálculo de TIR y VAN, proyección de escenarios (optimista, base y pesimista), análisis de riesgo del proyecto y recomendaciones estratégicas. Todo en un informe claro y ejecutivo para que tomes la mejor decisión.</div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              ¿Pueden atenderme si no estoy en San Miguel?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">Sí. Además de nuestra atención presencial en San Miguel, trabajamos con clientes de toda la zona del GBA y CABA de forma remota vía videollamada o WhatsApp. La distancia no es un obstáculo.</div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              ¿Cuánto cobran por la asesoría financiera?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">Nuestros honorarios dependen del tipo de servicio y la complejidad de la situación. Siempre te informamos los costos antes de comenzar, sin sorpresas. Contactanos para una primera consulta sin compromiso.</div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              ¿Con qué instrumentos de inversión trabajan?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">Trabajamos con fondos comunes de inversión, plazos fijos tradicionales y UVA, acciones, bonos y Cedears (acciones extranjeras en pesos). La elección depende siempre de tu perfil de riesgo y tus objetivos.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ CONTACTO ═══════════ -->
+  <section id="contacto">
+    <div class="contacto-bg"></div>
+    <div class="container">
+      <div class="contacto-inner">
+        <div class="contacto-left reveal">
+          <span class="section-label">Contacto</span>
+          <h2 class="section-title">¿Listo para tomar <span>mejores</span> decisiones?</h2>
+          <p>Dejanos tus datos y te contactamos a la brevedad. La primera consulta es sin cargo y sin compromiso.</p>
+          <div class="contacto-info">
+            <div class="info-item">
+              <div class="info-icon">📍</div>
+              <div>
+                <div class="info-label">Ubicación</div>
+                <!-- REEMPLAZAR con tu dirección exacta -->
+                <div class="info-value">San Miguel, Buenos Aires, Argentina</div>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="info-icon">📱</div>
+              <div>
+                <div class="info-label">WhatsApp / Teléfono</div>
+                <!-- REEMPLAZAR con tu teléfono -->
+                <div class="info-value">+54 9 11 XXXX-XXXX</div>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="info-icon">✉️</div>
+              <div>
+                <div class="info-label">Email</div>
+                <!-- REEMPLAZAR con tu email -->
+                <div class="info-value">contacto@riofinanzas.com</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="contacto-form reveal reveal-delay-2">
+          <div id="formContainer">
+            <div class="form-title">Solicitá tu consulta gratuita</div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nombre">Nombre completo *</label>
+                <input type="text" id="nombre" placeholder="Juan García" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" placeholder="juan@email.com" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="telefono">Teléfono / WhatsApp</label>
+              <input type="tel" id="telefono" placeholder="+54 9 11 XXXX-XXXX" />
+            </div>
+            <div class="form-group">
+              <label for="servicio">¿Qué servicio te interesa?</label>
+              <select id="servicio">
+                <option value="" disabled selected>Seleccioná un servicio</option>
+                <option>Inversiones y portafolios</option>
+                <option>Cambio de divisas</option>
+                <option>Asesoría financiera / contable</option>
+                <option>Evaluación de proyecto inmobiliario</option>
+                <option>Consulta general</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="mensaje">Mensaje (opcional)</label>
+              <textarea id="mensaje" placeholder="Contanos brevemente tu consulta o situación…"></textarea>
+            </div>
+            <button class="form-submit" id="formSubmit" onclick="submitForm()">
+              Enviar consulta →
+            </button>
+            <p class="form-note">🔒 Tus datos están seguros. No enviamos spam.</p>
+          </div>
+          <div class="form-success" id="formSuccess">
+            <div class="check">✅</div>
+            <p><strong>¡Consulta enviada con éxito!</strong><br>Gracias por contactarnos. Te responderemos a la brevedad para coordinar una reunión.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ FOOTER ═══════════ -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-brand-name">RIO</div>
+          <div class="footer-brand-sub">Servicios Financieros</div>
+          <p>Asesoramiento financiero profesional e independiente. Inversiones, divisas y real estate en San Miguel y el Gran Buenos Aires.</p>
+        </div>
+        <div>
+          <div class="footer-col-title">Servicios</div>
+          <div class="footer-links">
+            <a href="#servicios">Inversiones y portafolios</a>
+            <a href="#servicios">Cambio de divisas</a>
+            <a href="#servicios">Asesoría financiera</a>
+            <a href="#servicios">Real estate</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Empresa</div>
+          <div class="footer-links">
+            <a href="#nosotros">Nosotros</a>
+            <a href="#porque">Por qué elegirnos</a>
+            <a href="#faq">Preguntas frecuentes</a>
+            <a href="#contacto">Contacto</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2025 RIO Servicios Financieros. Todos los derechos reservados.</p>
+        <div class="footer-legal">
+          <a href="#">Política de privacidad</a>
+          <a href="#">Términos de uso</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══════════ JS ═══════════ -->
+  <script>
+    // ── Navbar scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // ── Hamburger
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+    });
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    });
+
+    // ── FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const answer = item.querySelector('.faq-answer');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => {
+          i.classList.remove('open');
+          i.querySelector('.faq-answer').style.maxHeight = null;
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+        }
+      });
+    });
+
+    // ── Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+
+    // ── Form submit (simulado — reemplazar con tu solución backend/formspree)
+    function submitForm() {
+      const nombre = document.getElementById('nombre').value.trim();
+      const email = document.getElementById('email').value.trim();
+      if (!nombre || !email) {
+        alert('Por favor completá tu nombre y email para continuar.');
+        return;
+      }
+      document.getElementById('formContainer').style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+      /* 
+        INTEGRACIÓN: Para recibir los mails de contacto podés usar:
+        - Formspree.io (gratis, fácil con GitHub Pages)
+        - EmailJS (envío sin backend)
+        - Netlify Forms
+        Consultá al desarrollador para configurar el envío real de emails.
+      */
+    }
+  </script>
+</body>
+</html>
