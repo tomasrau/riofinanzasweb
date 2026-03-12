@@ -156,11 +156,25 @@ img {
 }
 
 .brand {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 12px;
-  font-weight: 900;
-  letter-spacing: -0.03em;
+  justify-content: flex-start;
+  line-height: 1;
+}
+
+.brand-logo {
+  display: block;
+  width: auto;
+  height: 44px;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.footer-logo {
+  height: 40px;
+  width: auto;
+  max-width: 180px;
+  object-fit: contain;
 }
 
 .brand-mark {
@@ -864,5 +878,14 @@ footer {
 
   .copyright {
     flex-direction: column;
+  }
+
+  .brand-logo {
+    height: 36px;
+  }
+
+  .footer-logo {
+    height: 34px;
+    max-width: 160px;
   }
 }
