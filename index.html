@@ -3,38 +3,59 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="favicon.png">
 
   <title>RIO | Servicios Financieros</title>
   <meta
     name="description"
-    content="Asesoramiento financiero profesional e independiente en San Miguel. Inversiones, cambio de divisas, planificación financiera y evaluación de proyectos inmobiliarios."
+    content="Servicios financieros en Bella Vista, San Miguel. Inversiones, cambio de divisas, planificación financiera y evaluación de proyectos."
   />
   <meta
     name="keywords"
-    content="servicios financieros, inversiones, cambio de divisas, asesoramiento financiero, real estate, San Miguel, Buenos Aires"
+    content="servicios financieros, inversiones, cambio de divisas, planificación financiera, proyectos inmobiliarios, Bella Vista, San Miguel, Buenos Aires"
   />
   <meta name="theme-color" content="#1800ad" />
 
   <meta property="og:title" content="RIO | Servicios Financieros" />
   <meta
     property="og:description"
-    content="Tu capital necesita criterio, claridad y ejecución profesional."
+    content="Asesoramiento financiero profesional para personas, inversores y empresas."
   />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://riofinanzas.ar/" />
 
   <link rel="stylesheet" href="style.css" />
 </head>
+
+<!-- / whatsapp floating button / -->
+<a
+  href="https://wa.me/message/Q4LZOLT235M4D1"
+  class="floating-whatsapp"
+  target="_blank"
+  rel="noopener"
+  aria-label="Escribinos por WhatsApp"
+  title="Escribinos por WhatsApp"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 32 32"
+    aria-hidden="true"
+    class="floating-whatsapp-icon"
+  >
+    <path
+      fill="currentColor"
+      d="M19.11 17.27c-.26-.13-1.52-.75-1.76-.83-.23-.09-.4-.13-.57.13-.17.26-.66.83-.81 1-.15.17-.3.2-.56.07-.26-.13-1.08-.4-2.06-1.28-.76-.68-1.28-1.52-1.43-1.78-.15-.26-.02-.4.11-.53.12-.12.26-.3.39-.45.13-.15.17-.26.26-.43.09-.17.04-.32-.02-.45-.07-.13-.57-1.37-.78-1.88-.21-.5-.42-.43-.57-.44h-.49c-.17 0-.45.07-.68.32-.23.26-.89.87-.89 2.12 0 1.24.91 2.44 1.03 2.61.13.17 1.78 2.72 4.32 3.81.6.26 1.08.41 1.45.53.61.19 1.16.16 1.6.1.49-.07 1.52-.62 1.74-1.22.21-.6.21-1.12.15-1.22-.07-.1-.24-.16-.5-.29z"
+    />
+    <path
+      fill="currentColor"
+      d="M16.03 3.2c-7.08 0-12.83 5.75-12.83 12.83 0 2.27.6 4.5 1.74 6.46L3.1 28.8l6.5-1.7a12.78 12.78 0 0 0 6.43 1.75h.01c7.07 0 12.82-5.76 12.82-12.84 0-3.43-1.33-6.66-3.76-9.08A12.76 12.76 0 0 0 16.03 3.2zm0 23.49h-.01a10.6 10.6 0 0 1-5.4-1.48l-.39-.23-3.86 1.01 1.03-3.76-.25-.39a10.63 10.63 0 0 1-1.64-5.67c0-5.88 4.78-10.66 10.66-10.66 2.85 0 5.52 1.11 7.53 3.12a10.58 10.58 0 0 1 3.11 7.54c0 5.88-4.78 10.67-10.65 10.67z"
+    />
+  </svg>
+
+  <span class="floating-whatsapp-text">WhatsApp</span>
+</a>
+
 <body>
-  <!--
-    ============================
-    CONFIGURACIÓN RÁPIDA
-    Reemplazá estos datos:
-    1) data-whatsapp="54911XXXXXXXX"
-    2) contacto@riofinanzas.com
-    3) San Miguel, Buenos Aires, Argentina (si querés ajustar)
-    ============================
-  -->
 
   <header class="topbar">
     <div class="container">
@@ -61,90 +82,120 @@
           <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
         </div>
       </nav>
+
+      <div class="mobile-menu" id="mobileMenu">
+        <a href="#servicios">Servicios</a>
+        <a href="#proceso">Cómo trabajamos</a>
+        <a href="#diferenciales">Diferenciales</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contacto">Contacto</a>
+      </div>
     </div>
   </header>
+
+  <section class="quotes-bar" aria-label="Cotizaciones del día">
+    <div class="container">
+      <div class="quotes-bar-inner">
+        <div class="quotes-bar-label">Cotizaciones del día</div>
+  
+        <div class="quotes-ticker" id="quotesTicker">
+            <div class="quotes-track">
+              <div class="quote-item quote-loading">Cargando cotizaciones...</div>
+            </div>
+          </div>
+  
+        <a
+          href="https://wa.me/message/Q4LZOLT235M4D1"
+          class="quotes-bar-cta"
+          target="_blank"
+          rel="noopener"
+        >
+          Consultar operación
+        </a>
+      </div>
+    </div>
+  </section>
 
   <main>
     <section class="hero" id="inicio">
       <div class="container">
         <div class="hero-grid">
           <div class="hero-copy reveal">
-            <div class="eyebrow">San Miguel · Atención presencial y remota</div>
+            <div class="eyebrow">Bella Vista · Atención presencial y remota</div>
 
-            <h1>Tu capital necesita criterio, claridad y ejecución profesional.</h1>
+            <h1>Servicios financieros con criterio, claridad y seguimiento profesional.</h1>
 
             <p>
-              En RIO acompañamos a personas, inversores y empresas en decisiones
-              financieras que exigen análisis serio, atención personalizada y una
-              mirada práctica del contexto argentino.
+              Acompañamos a personas, inversores y empresas en decisiones financieras
+              que requieren análisis serio, atención personalizada y una ejecución ordenada.
             </p>
 
             <div class="btn-row">
-              <a class="btn btn-primary" href="#contacto">Quiero una consulta</a>
-              <a class="btn btn-secondary" href="#servicios">Ver servicios</a>
+              <a class="btn btn-primary" href="#contacto">Solicitar consulta</a>
+              <a class="btn btn-secondary" href="#servicios">Conocer servicios</a>
             </div>
 
             <div class="hero-proof">
+              <div class="proof-chip">Atención personalizada</div>
+              <div class="proof-chip">Presencial y remota</div>
               <div class="proof-chip">Primera consulta orientativa</div>
-              <div class="proof-chip">Atención humana, sin call center</div>
-              <div class="proof-chip">Estrategias según perfil y objetivo</div>
             </div>
           </div>
 
           <aside class="hero-card reveal">
-            <h3>Lo que cambia cuando hay criterio</h3>
+            <h3>Un enfoque profesional para decisiones relevantes</h3>
             <p>
-              No vendemos promesas mágicas ni recetas copiadas. Diseñamos
-              estrategias y análisis adaptados a tu situación real.
+              Trabajamos con una metodología clara para ordenar cada caso y definir
+              el mejor camino de acción según el perfil, el objetivo y el contexto.
             </p>
 
             <div class="hero-list">
               <div class="hero-list-item">
                 <div class="hero-list-icon">01</div>
                 <div>
-                  <strong>Diagnóstico claro</strong><br />
-                  Entendemos tu necesidad, tu horizonte y el riesgo que podés asumir.
+                  <strong>Relevamiento inicial</strong><br />
+                  Analizamos tu necesidad, objetivo y horizonte de decisión.
                 </div>
               </div>
 
               <div class="hero-list-item">
                 <div class="hero-list-icon">02</div>
                 <div>
-                  <strong>Propuesta concreta</strong><br />
-                  Te explicamos opciones, costos, lógica de trabajo y próximos pasos.
+                  <strong>Evaluación y propuesta</strong><br />
+                  Definimos alternativas, alcance y próximos pasos.
                 </div>
               </div>
 
               <div class="hero-list-item">
                 <div class="hero-list-icon">03</div>
                 <div>
-                  <strong>Seguimiento profesional</strong><br />
-                  Acompañamos la decisión con foco en orden, transparencia y ejecución.
+                  <strong>Acompañamiento</strong><br />
+                  Seguimiento profesional con foco en claridad y ejecución.
                 </div>
               </div>
             </div>
 
-            <a class="btn btn-primary" href="#contacto" style="width: 100%;">Coordinar una conversación</a>
+            <a class="btn btn-primary" href="#contacto" style="width: 100%;">Coordinar una consulta</a>
           </aside>
         </div>
 
         <div class="trust-strip">
           <div class="trust-grid reveal">
             <div class="trust-box">
-              <strong>Atención personalizada</strong>
-              <span>Tratás con profesionales, no con una mesa anónima.</span>
-            </div>
-            <div class="trust-box">
-              <strong>Modalidad flexible</strong>
-              <span>Presencial en San Miguel y remota para GBA, CABA y otras zonas.</span>
+              <strong>Atención directa</strong>
+              <span>Contacto profesional y seguimiento personalizado.</span>
             </div>
             <div class="trust-box">
               <strong>Proceso claro</strong>
-              <span>Antes de avanzar, entendés qué se hace, cuánto cuesta y para qué sirve.</span>
+              <span>Definimos alcance, modalidad y próximos pasos desde el inicio.</span>
             </div>
             <div class="trust-box">
               <strong>Confidencialidad</strong>
-              <span>Tus datos, tu patrimonio y tus decisiones se tratan con reserva profesional.</span>
+              <span>Tratamiento reservado de la información y de cada consulta.</span>
+            </div>
+            <div class="trust-box">
+              <strong>Modalidad flexible</strong>
+              <span>Atención presencial en Bella Vista y remota según necesidad.</span>
             </div>
           </div>
         </div>
@@ -156,10 +207,10 @@
         <div class="split-head reveal">
           <div>
             <div class="eyebrow">Servicios</div>
-            <h2 class="section-title">Soluciones financieras con foco real, no humo decorativo.</h2>
+            <h2 class="section-title">Qué hacemos</h2>
             <p class="section-subtitle">
-              Organizamos nuestros servicios para que el usuario entienda rápido
-              qué problema resolvemos y en qué casos conviene hablar con nosotros.
+              Servicios orientados a resolver necesidades concretas de personas,
+              inversores y empresas.
             </p>
           </div>
           <div class="btn-row">
@@ -169,49 +220,16 @@
 
         <div class="grid cards-2">
           <article class="card reveal">
-            <div class="card-number">A</div>
-            <h3>Para personas e inversores</h3>
-            <p>
-              Diseñamos estrategias orientadas a proteger, ordenar o hacer crecer
-              tu patrimonio con una mirada consistente con tu perfil y tu horizonte.
-            </p>
-            <div class="tag-row">
-              <span class="tag">Inversiones y portafolios</span>
-              <span class="tag">Cambio de divisas</span>
-              <span class="tag">Planificación financiera</span>
-              <span class="tag">Ahorro con criterio</span>
-            </div>
-          </article>
-
-          <article class="card reveal">
-            <div class="card-number">B</div>
-            <h3>Para empresas, desarrolladores y proyectos</h3>
-            <p>
-              Evaluamos decisiones donde el capital comprometido exige números,
-              escenarios y criterio estratégico, no intuición disfrazada de certeza.
-            </p>
-            <div class="tag-row">
-              <span class="tag">Asesoría financiera y contable</span>
-              <span class="tag">Viabilidad de proyectos</span>
-              <span class="tag">Flujo de caja</span>
-              <span class="tag">TIR · VAN · riesgo</span>
-            </div>
-          </article>
-        </div>
-
-        <div class="grid cards-3" style="margin-top: 24px;">
-          <article class="card reveal">
             <div class="card-number">01</div>
             <h3>Inversiones y portafolios</h3>
             <p>
-              Armamos estrategias personalizadas según perfil de riesgo,
-              liquidez necesaria y horizonte temporal. La lógica es ordenar,
-              diversificar y decidir con fundamento.
+              Asesoramiento para ordenar, diversificar y estructurar decisiones de inversión
+              según perfil de riesgo, horizonte y objetivos patrimoniales.
             </p>
             <div class="tag-row">
               <span class="tag">Perfil de riesgo</span>
               <span class="tag">Diversificación</span>
-              <span class="tag">Mercado local e internacional</span>
+              <span class="tag">Planificación</span>
             </div>
           </article>
 
@@ -219,72 +237,41 @@
             <div class="card-number">02</div>
             <h3>Cambio de divisas</h3>
             <p>
-              Operaciones de cambio con atención ágil, trato directo y criterios
-              claros de coordinación. Ideal para clientes que valoran rapidez,
-              discreción y seguimiento.
+              Atención ágil y personalizada para operaciones de cambio, con coordinación
+              clara y seguimiento directo.
             </p>
             <div class="tag-row">
               <span class="tag">USD</span>
               <span class="tag">EUR</span>
               <span class="tag">BRL</span>
-              <span class="tag">Coordinación simple</span>
             </div>
           </article>
 
           <article class="card reveal">
             <div class="card-number">03</div>
-            <h3>Asesoría financiera y contable</h3>
+            <h3>Planificación financiera</h3>
             <p>
-              Revisamos estructura de ingresos, gastos, planificación y orden
-              económico-financiero para que tomes decisiones con más control y menos improvisación.
+              Ordenamiento financiero para personas y empresas: estructura de ingresos,
+              gastos, liquidez y criterios de organización patrimonial.
             </p>
             <div class="tag-row">
-              <span class="tag">Planificación</span>
-              <span class="tag">Criterio patrimonial</span>
               <span class="tag">Orden financiero</span>
+              <span class="tag">Liquidez</span>
+              <span class="tag">Patrimonio</span>
             </div>
           </article>
 
           <article class="card reveal">
             <div class="card-number">04</div>
-            <h3>Evaluación de proyectos inmobiliarios</h3>
+            <h3>Evaluación de proyectos</h3>
             <p>
-              Analizamos viabilidad financiera con herramientas concretas:
-              escenarios, flujo de caja, TIR, VAN y sensibilidad. Antes de poner capital, conviene pensar.
+              Análisis de viabilidad financiera para proyectos inmobiliarios y decisiones
+              de inversión con base en flujo de fondos, retorno y riesgo.
             </p>
             <div class="tag-row">
-              <span class="tag">TIR</span>
-              <span class="tag">VAN</span>
+              <span class="tag">Flujo de fondos</span>
+              <span class="tag">TIR / VAN</span>
               <span class="tag">Escenarios</span>
-              <span class="tag">Riesgo</span>
-            </div>
-          </article>
-
-          <article class="card reveal">
-            <div class="card-number">05</div>
-            <h3>Consultas estratégicas</h3>
-            <p>
-              Si tu caso no entra perfecto en una cajita, mejor. También trabajamos
-              consultas puntuales para ordenar decisiones patrimoniales y de negocio.
-            </p>
-            <div class="tag-row">
-              <span class="tag">Consulta ad hoc</span>
-              <span class="tag">Decisiones patrimoniales</span>
-              <span class="tag">Evaluación específica</span>
-            </div>
-          </article>
-
-          <article class="card reveal">
-            <div class="card-number">06</div>
-            <h3>Diagnóstico inicial</h3>
-            <p>
-              Primera conversación para entender tu situación, detectar oportunidades
-              y decirte con honestidad si te podemos ayudar y de qué manera.
-            </p>
-            <div class="tag-row">
-              <span class="tag">Sin vueltas</span>
-              <span class="tag">Primer paso claro</span>
-              <span class="tag">Enfoque profesional</span>
             </div>
           </article>
         </div>
@@ -295,38 +282,34 @@
       <div class="container">
         <div class="reveal">
           <div class="eyebrow">Cómo trabajamos</div>
-          <h2 class="section-title">Un proceso simple, claro y serio.</h2>
+          <h2 class="section-title">Un proceso simple y profesional</h2>
           <p class="section-subtitle">
-            La conversión mejora cuando el usuario entiende el camino. Acá no hay
-            misterio ornamental: hay pasos concretos.
+            Cada consulta sigue un esquema de trabajo claro para facilitar la evaluación y la toma de decisión.
           </p>
         </div>
 
         <div class="process-grid">
           <article class="process-card reveal">
             <div class="process-step">Paso 1</div>
-            <h3>Nos contás tu caso</h3>
+            <h3>Primer contacto</h3>
             <p>
-              Podés escribirnos por WhatsApp o dejar tus datos. Cuanto más claro
-              el contexto, mejor el diagnóstico inicial.
+              Recibimos tu consulta y entendemos el objetivo, el contexto y el tipo de necesidad.
             </p>
           </article>
 
           <article class="process-card reveal">
             <div class="process-step">Paso 2</div>
-            <h3>Evaluamos tu necesidad</h3>
+            <h3>Evaluación inicial</h3>
             <p>
-              Identificamos objetivo, urgencia, riesgos, nivel de complejidad y el
-              tipo de servicio que mejor encaja.
+              Revisamos la información disponible y definimos el servicio o enfoque más adecuado.
             </p>
           </article>
 
           <article class="process-card reveal">
             <div class="process-step">Paso 3</div>
-            <h3>Te proponemos un camino</h3>
+            <h3>Propuesta de trabajo</h3>
             <p>
-              Te explicamos cómo avanzar, qué información hace falta y qué alcance
-              tendría el trabajo. Sin letra chica, sin chamuyo cósmico.
+              Te indicamos modalidad, alcance y próximos pasos para avanzar con claridad.
             </p>
           </article>
         </div>
@@ -339,60 +322,59 @@
           <div class="eyebrow">Diferenciales</div>
           <h2 class="section-title">Por qué elegir RIO</h2>
           <p class="section-subtitle">
-            En servicios financieros, la confianza no se declara: se construye con
-            criterio, consistencia y detalles bien resueltos.
+            Un servicio financiero requiere seriedad, claridad operativa y una relación de confianza.
           </p>
         </div>
 
         <div class="why-grid">
           <div class="why-item reveal">
-            <strong>Asesoramiento independiente</strong>
+            <strong>Atención personalizada</strong>
             <p>
-              Evaluamos alternativas según tu conveniencia, no según objetivos comerciales ajenos.
+              Cada consulta se aborda de manera directa, con seguimiento y criterio profesional.
             </p>
           </div>
 
           <div class="why-item reveal">
-            <strong>Trato directo y profesional</strong>
+            <strong>Enfoque independiente</strong>
             <p>
-              Hablás con personas que entienden el problema y pueden ordenar una respuesta concreta.
+              Las recomendaciones se orientan a la conveniencia del cliente y a su objetivo específico.
             </p>
           </div>
 
           <div class="why-item reveal">
             <strong>Visión integral</strong>
             <p>
-              Combinamos análisis financiero, contexto argentino y criterio estratégico en cada caso.
+              Combinamos análisis financiero, contexto económico y evaluación estratégica.
             </p>
           </div>
 
           <div class="why-item reveal">
-            <strong>Claridad antes de avanzar</strong>
+            <strong>Proceso ordenado</strong>
             <p>
-              Explicamos el alcance del servicio, los pasos y la lógica de trabajo antes de comprometerte.
+              El trabajo se estructura con pasos definidos y criterios claros desde el inicio.
             </p>
           </div>
 
           <div class="why-item reveal">
             <strong>Modalidad flexible</strong>
             <p>
-              Atención presencial en San Miguel y modalidad remota cuando el caso o la ubicación lo requieran.
+              Atención presencial en Bella Vista y remota según ubicación y tipo de consulta.
             </p>
           </div>
 
           <div class="why-item reveal">
-            <strong>Confidencialidad y discreción</strong>
+            <strong>Confidencialidad</strong>
             <p>
-              En finanzas, los detalles importan. Por eso cuidamos tanto la forma como el fondo.
+              Tratamiento profesional y reservado de la información vinculada a cada caso.
             </p>
           </div>
         </div>
 
         <div class="cta-banner reveal">
           <div>
-            <h3>La primera buena decisión es ordenar la conversación.</h3>
+            <h3>Solicitá una primera consulta</h3>
             <p>
-              Contanos brevemente tu situación y vemos si tiene sentido avanzar.
+              Contanos brevemente tu necesidad y te indicaremos cómo avanzar.
             </p>
           </div>
           <a class="btn btn-secondary" href="#contacto">Solicitar consulta</a>
@@ -404,87 +386,69 @@
       <div class="container">
         <div class="reveal">
           <div class="eyebrow">Preguntas frecuentes</div>
-          <h2 class="section-title">Dudas normales antes de hablar de dinero</h2>
+          <h2 class="section-title">Consultas habituales</h2>
           <p class="section-subtitle">
-            Mejor responderlas de frente. La ambigüedad queda linda en el cine; en finanzas, no tanto.
+            Respuestas breves a las dudas más comunes antes de iniciar una consulta.
           </p>
         </div>
 
         <div class="faq-wrap">
           <div class="faq-item reveal active">
             <button class="faq-question" type="button">
-              <span>¿Necesito tener mucho capital para comenzar?</span>
+              <span>¿Atienden únicamente en Bella Vista?</span>
               <span>+</span>
             </button>
             <div class="faq-answer">
               <p>
-                No. Trabajamos con diferentes perfiles y objetivos. Lo importante no
-                es parecer grande en una foto de LinkedIn, sino ordenar bien la estrategia.
+                No. Atendemos de manera presencial en Bella Vista y también en modalidad remota.
               </p>
             </div>
           </div>
 
           <div class="faq-item reveal">
             <button class="faq-question" type="button">
-              <span>¿Atienden solo en San Miguel?</span>
+              <span>¿Qué tipo de clientes pueden consultar?</span>
               <span>+</span>
             </button>
             <div class="faq-answer">
               <p>
-                No. Atendemos de forma presencial en San Miguel y también de manera
-                remota para clientes de GBA, CABA y otras ubicaciones.
+                Trabajamos con personas, inversores y empresas según el tipo de necesidad financiera.
               </p>
             </div>
           </div>
 
           <div class="faq-item reveal">
             <button class="faq-question" type="button">
-              <span>¿Qué incluye una consulta inicial?</span>
+              <span>¿Qué incluye la consulta inicial?</span>
               <span>+</span>
             </button>
             <div class="faq-answer">
               <p>
-                Una conversación orientativa para entender tu caso, identificar el
-                tipo de necesidad y definir si conviene avanzar con un servicio específico.
+                Una instancia orientativa para entender el caso, definir el alcance y evaluar la mejor forma de avanzar.
               </p>
             </div>
           </div>
 
           <div class="faq-item reveal">
             <button class="faq-question" type="button">
-              <span>¿Cómo trabajan la evaluación de proyectos inmobiliarios?</span>
+              <span>¿Realizan evaluación de proyectos inmobiliarios?</span>
               <span>+</span>
             </button>
             <div class="faq-answer">
               <p>
-                Analizamos flujo de caja, TIR, VAN, sensibilidad, escenarios y
-                riesgos para ayudarte a decidir con más evidencia y menos intuición suelta.
+                Sí. Analizamos flujo de fondos, rentabilidad, escenarios y variables de riesgo relevantes.
               </p>
             </div>
           </div>
 
           <div class="faq-item reveal">
             <button class="faq-question" type="button">
-              <span>¿Cuándo informan honorarios y alcance?</span>
+              <span>¿Cómo se define el alcance del servicio?</span>
               <span>+</span>
             </button>
             <div class="faq-answer">
               <p>
-                Antes de comenzar. La idea es que entiendas qué se hace, qué entregables
-                hay y cuál es el costo estimado, sin sorpresas simpáticas.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item reveal">
-            <button class="faq-question" type="button">
-              <span>¿Qué tipo de servicios pueden consultar personas y empresas?</span>
-              <span>+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                Desde inversiones y cambio de divisas hasta orden financiero,
-                planificación y análisis de viabilidad de proyectos.
+                Luego del primer relevamiento, se define la modalidad de trabajo y los próximos pasos.
               </p>
             </div>
           </div>
@@ -496,10 +460,9 @@
       <div class="container">
         <div class="reveal">
           <div class="eyebrow">Contacto</div>
-          <h2 class="section-title">Hablemos con contexto, no con ansiedad.</h2>
+          <h2 class="section-title">Coordiná una consulta</h2>
           <p class="section-subtitle">
-            Dejanos tus datos o escribinos directo por WhatsApp. La primera conversación
-            sirve para entender si realmente te podemos ayudar y cómo.
+            Podés escribirnos directamente por WhatsApp o dejarnos tus datos para que tomemos contacto.
           </p>
         </div>
 
@@ -507,8 +470,7 @@
           <aside class="contact-panel reveal">
             <h3>Información de contacto</h3>
             <p>
-              Atención profesional para personas, inversores y empresas que buscan
-              una conversación seria sobre patrimonio, decisiones y estrategia financiera.
+              Atención para personas, inversores y empresas que requieran una instancia de evaluación o asesoramiento financiero.
             </p>
 
             <div class="contact-list">
@@ -516,7 +478,7 @@
                 <div class="contact-icon">📍</div>
                 <div>
                   <strong>Ubicación</strong>
-                  <span>San Miguel, Buenos Aires, Argentina</span>
+                  <span>Bella Vista, San Miguel, Buenos Aires</span>
                 </div>
               </div>
 
@@ -524,7 +486,9 @@
                 <div class="contact-icon">💬</div>
                 <div>
                   <strong>WhatsApp</strong>
-                  <a href="#" id="whatsLink">+54 9 11 XXXX-XXXX</a>
+                  <a href="https://wa.me/message/Q4LZOLT235M4D1" target="_blank" rel="noopener">
+                    +54 9 11 6865 9656
+                  </a>
                 </div>
               </div>
 
@@ -532,7 +496,7 @@
                 <div class="contact-icon">✉</div>
                 <div>
                   <strong>Email</strong>
-                  <a href="mailto:contacto@riofinanzas.com">contacto@riofinanzas.com</a>
+                  <a href="mailto:riofinanzas2026@gmail.com">riofinanzas2026@gmail.com</a>
                 </div>
               </div>
 
@@ -540,25 +504,23 @@
                 <div class="contact-icon">⏱</div>
                 <div>
                   <strong>Modalidad</strong>
-                  <span>Presencial y remota, según el tipo de consulta.</span>
+                  <span>Atención presencial y remota.</span>
                 </div>
               </div>
             </div>
 
             <div class="mini-note">
-              Te recomendamos dejar una breve descripción de tu necesidad para que la
-              primera respuesta sea más útil y menos genérica.
+              Para una respuesta más precisa, indicá brevemente qué tipo de servicio necesitás.
             </div>
           </aside>
 
           <div class="form-panel reveal">
-            <h3>Solicitá una consulta</h3>
+            <h3>Enviar consulta</h3>
             <p>
-              Este formulario abre WhatsApp con un mensaje armado automáticamente.
-              Funciona perfecto en GitHub Pages sin backend.
+              Completá el formulario y se abrirá WhatsApp con un mensaje precargado.
             </p>
 
-            <form id="contactForm" data-whatsapp="54911XXXXXXXX">
+            <form id="contactForm" data-whatsapp="5491168659656">
               <div class="field-row">
                 <div>
                   <label for="nombre">Nombre completo *</label>
@@ -578,14 +540,13 @@
                 </div>
 
                 <div>
-                  <label for="servicio">¿Qué servicio te interesa? *</label>
+                  <label for="servicio">Servicio de interés *</label>
                   <select id="servicio" name="servicio" required>
-                    <option value="">Seleccioná una opción</option>
+                    <option value="">Seleccionar</option>
                     <option>Inversiones y portafolios</option>
                     <option>Cambio de divisas</option>
-                    <option>Asesoría financiera y contable</option>
-                    <option>Evaluación de proyecto inmobiliario</option>
-                    <option>Consulta estratégica general</option>
+                    <option>Planificación financiera</option>
+                    <option>Evaluación de proyectos</option>
                   </select>
                 </div>
               </div>
@@ -595,18 +556,18 @@
                 <textarea
                   id="mensaje"
                   name="mensaje"
-                  placeholder="Contanos brevemente tu situación o qué querés resolver."
+                  placeholder="Describí brevemente tu consulta."
                 ></textarea>
               </div>
 
-              <button type="submit" class="btn btn-primary">Enviar consulta por WhatsApp</button>
+              <button type="submit" class="btn btn-primary">Enviar por WhatsApp</button>
+
               <div class="form-legal">
-                Tus datos se usan únicamente para responder tu consulta. No enviamos spam.
+                Tus datos serán utilizados únicamente para responder la consulta.
               </div>
 
               <div class="success-box" id="successBox">
-                Se abrió tu consulta en WhatsApp. Si no ocurrió automáticamente,
-                revisá el número configurado en el HTML.
+                Se abrió tu consulta en WhatsApp.
               </div>
             </form>
           </div>
@@ -627,8 +588,7 @@
             />
           </a>
           <p>
-            Asesoramiento financiero profesional e independiente para personas,
-            inversores y empresas. Inversiones, divisas, planificación y análisis de proyectos.
+            Servicios financieros para personas, inversores y empresas.
           </p>
         </div>
 
@@ -646,8 +606,8 @@
         <div class="footer-col">
           <h4>Contacto</h4>
           <div class="footer-links">
-            <a href="mailto:contacto@riofinanzas.com">contacto@riofinanzas.com</a>
-            <a href="#" id="whatsFooter">WhatsApp</a>
+            <a href="mailto:riofinanzas2026@gmail.com">riofinanzas2026@gmail.com</a>
+            <a href="https://wa.me/message/Q4LZOLT235M4D1" target="_blank" rel="noopener">WhatsApp</a>
             <a href="#contacto">Solicitar consulta</a>
           </div>
         </div>
@@ -655,102 +615,13 @@
 
       <div class="copyright">
         <span>© 2026 RIO Servicios Financieros. Todos los derechos reservados.</span>
-        <span>Diseño orientado a confianza, claridad y conversión.</span>
+        <span>Bella Vista · Buenos Aires</span>
       </div>
     </div>
   </footer>
 
-  <script>
-    // Menú mobile
-    const menuToggle = document.getElementById("menuToggle");
-    const mobileMenu = document.getElementById("mobileMenu");
-
-    if (menuToggle) {
-      menuToggle.addEventListener("click", () => {
-        mobileMenu.style.display =
-          mobileMenu.style.display === "grid" ? "none" : "grid";
-      });
-    }
-
-    document.querySelectorAll(".mobile-menu a").forEach((link) => {
-      link.addEventListener("click", () => {
-        mobileMenu.style.display = "none";
-      });
-    });
-
-    // FAQ accordion
-    const faqItems = document.querySelectorAll(".faq-item");
-
-    faqItems.forEach((item) => {
-      const btn = item.querySelector(".faq-question");
-      btn.addEventListener("click", () => {
-        const isActive = item.classList.contains("active");
-
-        faqItems.forEach((el) => el.classList.remove("active"));
-
-        if (!isActive) {
-          item.classList.add("active");
-        }
-      });
-    });
-
-    // Formulario -> WhatsApp
-    const form = document.getElementById("contactForm");
-    const successBox = document.getElementById("successBox");
-    const whatsLink = document.getElementById("whatsLink");
-    const whatsFooter = document.getElementById("whatsFooter");
-
-    const whatsappNumber = form.dataset.whatsapp; // Formato: 54911XXXXXXXX
-    const baseWhatsUrl = `https://wa.me/${whatsappNumber}`;
-
-    if (whatsLink) {
-      whatsLink.href = baseWhatsUrl;
-      whatsLink.textContent = `+${whatsappNumber}`;
-    }
-
-    if (whatsFooter) {
-      whatsFooter.href = baseWhatsUrl;
-    }
-
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-
-      const nombre = document.getElementById("nombre").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const telefono = document.getElementById("telefono").value.trim();
-      const servicio = document.getElementById("servicio").value.trim();
-      const mensaje = document.getElementById("mensaje").value.trim();
-
-      const texto = `
-Hola, RIO. Quiero realizar una consulta.
-
-Nombre: ${nombre}
-Email: ${email}
-Teléfono: ${telefono || "-"}
-Servicio de interés: ${servicio}
-Mensaje: ${mensaje || "-"}
-      `.trim();
-
-      const finalUrl = `${baseWhatsUrl}?text=${encodeURIComponent(texto)}`;
-      window.open(finalUrl, "_blank");
-
-      successBox.style.display = "block";
-      form.reset();
-    });
-
-    // Aparición suave al hacer scroll
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
-        });
-      },
-      { threshold: 0.12 }
-    );
-
-    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
-  </script>
+  <script src="quotes-config.js"></script>
+  <script src="script.js"></script>
+  
 </body>
 </html>
