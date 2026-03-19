@@ -2,8 +2,8 @@ window.RIO_QUOTES_CONFIG = {
     manualQuotes: {
       blue: {
         label: "Blue RIO",
-        compra: 1420,
-        venta: 1440
+        compra: 1405,
+        venta: 1425
       }
     }
   };
