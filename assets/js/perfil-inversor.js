@@ -317,11 +317,11 @@ function getPdfProfileConfig(profileKey) {
         "Un perfil demasiado conservador puede resignar rendimiento real en horizontes largos."
       ],
       allocation: [
-        { name: "Liquidez / Money Market", weight: 35 },
-        { name: "Renta fija / instrumentos conservadores", weight: 45 },
-        { name: "Cobertura / diversificación", weight: 15 },
-        { name: "Activos de crecimiento", weight: 5 }
-      ]
+        { name: "Liquidez y bajo riesgo", value: 35 },
+        { name: "Renta fija (bonos, ON, letras)", value: 50 },
+        { name: "Renta variable (acciones, CEDEARs, ETFs)", value: 10 },
+        { name: "Activos alternativos / cobertura (oro, commodities, cripto, etc.)", value: 5 }
+      ],
     },
     moderado: {
       scoreRange: "Rango de referencia: 17 a 24 puntos",
@@ -344,11 +344,11 @@ function getPdfProfileConfig(profileKey) {
         "No perder coherencia entre plazo, riesgo y objetivo."
       ],
       allocation: [
-        { name: "Liquidez / Money Market", weight: 20 },
-        { name: "Renta fija / instrumentos defensivos", weight: 35 },
-        { name: "Activos de crecimiento diversificados", weight: 30 },
-        { name: "Cobertura / alternativos", weight: 15 }
-      ]
+        { name: "Liquidez y bajo riesgo", value: 15 },
+        { name: "Renta fija (bonos, ON, letras)", value: 40 },
+        { name: "Renta variable (acciones, CEDEARs, ETFs)", value: 35 },
+        { name: "Activos alternativos / cobertura (oro, commodities, cripto, etc.)", value: 10 }
+      ],
     },
     equilibrado: {
       scoreRange: "Rango de referencia: 25 a 32 puntos",
@@ -371,10 +371,10 @@ function getPdfProfileConfig(profileKey) {
         "Evitar concentración excesiva por entusiasmo de corto plazo."
       ],
       allocation: [
-        { name: "Liquidez / Money Market", weight: 15 },
-        { name: "Renta fija / instrumentos defensivos", weight: 25 },
-        { name: "Activos de crecimiento diversificados", weight: 45 },
-        { name: "Cobertura / alternativos", weight: 15 }
+        { name: "Liquidez y bajo riesgo", weight: 15 },
+        { name: "Renta fija (bonos, ON, letras)", weight: 25 },
+        { name: "Renta variable (acciones, CEDEARs, ETFs)", weight: 45 },
+        { name: "Activos alternativos / cobertura (oro, commodities, cripto, etc.)", weight: 15 }
       ]
     },
     agresivo: {
@@ -398,10 +398,10 @@ function getPdfProfileConfig(profileKey) {
         "Agresividad no debe confundirse con improvisación."
       ],
       allocation: [
-        { name: "Liquidez / Money Market", weight: 10 },
-        { name: "Renta fija / instrumentos defensivos", weight: 20 },
-        { name: "Activos de crecimiento diversificados", weight: 55 },
-        { name: "Cobertura / alternativos", weight: 15 }
+        { name: "Liquidez y bajo riesgo", value: 5 },
+        { name: "Renta fija (bonos, ON, letras)", value: 20 },
+        { name: "Renta variable (acciones, CEDEARs, ETFs)", value: 65 },
+        { name: "Activos alternativos / cobertura (oro, commodities, cripto, etc.)", value: 10 }
       ]
     }
   };
