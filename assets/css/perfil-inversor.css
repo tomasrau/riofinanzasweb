@@ -28,6 +28,10 @@ body {
   flex-shrink: 0;
 }
 
+/* =========================
+   HERO
+========================= */
+
 .investor-hero {
   padding: 50px 0 34px;
   background:
@@ -97,6 +101,10 @@ body {
   margin-top: 22px;
 }
 
+/* =========================
+   PROGRESO
+========================= */
+
 .investor-progress-floating {
   position: fixed;
   right: 22px;
@@ -149,6 +157,10 @@ body {
   transition: width 0.25s ease;
 }
 
+/* =========================
+   HEAD / LAYOUT
+========================= */
+
 .investor-head {
   display: grid;
   grid-template-columns: 1fr;
@@ -170,9 +182,13 @@ body {
   min-width: 0;
 }
 
+/* =========================
+   QUESTION CARDS
+========================= */
+
 .question-card {
   border: 1px solid var(--border);
-  border-radius: 26px;
+  border-radius: 28px;
   background: #fff;
   padding: 24px;
   box-shadow: 0 12px 24px rgba(17, 24, 39, 0.04);
@@ -213,64 +229,71 @@ body {
 
 .options-group {
   display: grid;
-  gap: 12px;
+  gap: 14px;
   min-width: 0;
 }
+
+/* =========================
+   OPTION CARDS
+========================= */
 
 .option-card {
   position: relative;
   display: block;
   min-width: 0;
-  padding: 16px 18px 16px 52px;
+  padding: 18px 18px 18px 64px;
   border: 1px solid #dfe4ee;
-  border-radius: 18px;
+  border-radius: 20px;
   background: #fff;
   cursor: pointer;
-  transition: 0.2s ease;
+  transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .option-card:hover {
-  border-color: rgba(24, 0, 173, 0.26);
+  border-color: rgba(24, 0, 173, 0.22);
   background: #fcfcff;
+  box-shadow: 0 8px 20px rgba(17, 24, 39, 0.04);
 }
 
+.option-card.is-selected {
+  border-color: rgba(24, 0, 173, 0.38);
+  background: var(--primary-soft);
+  box-shadow: 0 10px 24px rgba(24, 0, 173, 0.08);
+}
+
+/* RESET fuerte del input global de style.css */
 .option-card input[type="radio"] {
   -webkit-appearance: none;
   appearance: none;
   position: absolute;
-  top: 18px;
-  left: 18px;
-  width: 22px;
-  height: 22px;
-  margin: 0;
-  border: 2px solid #8d94a5;
-  border-radius: 50%;
-  background: #fff;
-  display: block;
+  top: 21px;
+  left: 20px;
+  width: 24px !important;
+  height: 24px !important;
+  min-width: 24px !important;
+  min-height: 24px !important;
+  max-width: 24px !important;
+  max-height: 24px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 2px solid #8d94a5 !important;
+  border-radius: 50% !important;
+  background: #fff !important;
+  box-shadow: none !important;
+  outline: none;
+  display: block !important;
   cursor: pointer;
-}
-
-.option-card input[type="radio"]::after {
-  content: "";
-  position: absolute;
-  inset: 4px;
-  border-radius: 50%;
-  background: var(--primary);
-  transform: scale(0);
-  transition: transform 0.18s ease;
+  flex: none !important;
 }
 
 .option-card input[type="radio"]:checked {
-  border-color: var(--primary);
-}
-
-.option-card input[type="radio"]:checked::after {
-  transform: scale(1);
+  border-color: var(--primary) !important;
+  background:
+    radial-gradient(circle at center, var(--primary) 0 42%, #ffffff 44%) !important;
 }
 
 .option-card input[type="radio"]:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 4px rgba(24, 0, 173, 0.12);
+  box-shadow: 0 0 0 4px rgba(24, 0, 173, 0.12) !important;
 }
 
 .option-content {
@@ -280,6 +303,7 @@ body {
 }
 
 .option-title {
+  display: block;
   font-size: 1rem;
   font-weight: 700;
   color: #1f2937;
@@ -291,6 +315,7 @@ body {
 }
 
 .option-text {
+  display: block;
   font-size: 0.93rem;
   color: var(--muted);
   line-height: 1.42;
@@ -300,19 +325,18 @@ body {
   hyphens: none;
 }
 
-.option-card.is-selected {
-  border-color: rgba(24, 0, 173, 0.38);
-  background: var(--primary-soft);
-}
-
 .investor-form-actions {
-  margin-top: 6px;
+  margin-top: 8px;
 }
 
 .investor-disclaimer {
   color: var(--muted);
   font-size: 0.9rem;
 }
+
+/* =========================
+   SIDE PANEL
+========================= */
 
 .investor-side-panel {
   display: grid;
@@ -347,6 +371,10 @@ body {
   display: grid;
   gap: 8px;
 }
+
+/* =========================
+   RESULT
+========================= */
 
 .investor-result-section {
   padding-top: 0;
@@ -421,6 +449,10 @@ body {
 .investor-disclaimer-result {
   margin-top: 16px;
 }
+
+/* =========================
+   MODAL
+========================= */
 
 .lead-modal {
   position: fixed;
@@ -506,6 +538,10 @@ body {
   box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.08);
 }
 
+/* =========================
+   BREAKPOINTS
+========================= */
+
 @media (max-width: 1200px) {
   .nav-links-investor {
     gap: 14px;
@@ -529,54 +565,26 @@ body {
   }
 
   .investor-progress-floating {
-    width: min(340px, calc(100vw - 32px));
+    position: sticky;
+    top: 88px;
+    right: auto;
+    left: auto;
+    bottom: auto;
+    width: 100%;
+    margin: 0 0 18px;
+    z-index: 25;
+  }
+
+  .investor-progress-floating-inner {
+    backdrop-filter: none;
   }
 }
 
 @media (max-width: 900px) {
-  .topbar .container {
-    position: static;
-  }
-
-  .nav-investor {
-    min-height: 76px;
-  }
-
   .nav-links-investor,
   .nav-actions-investor .btn-secondary,
   .nav-actions-investor .btn-primary {
     display: none;
-  }
-
-  .menu-toggle {
-    display: inline-grid;
-    place-items: center;
-  }
-
-  .mobile-menu {
-    position: static;
-    display: none;
-    gap: 12px;
-    padding: 14px 0 20px;
-    border-top: 1px solid var(--border);
-    border-radius: 0;
-    background: transparent;
-    box-shadow: none;
-    z-index: auto;
-  }
-
-  .mobile-menu a {
-    display: block;
-    padding: 0;
-    border-radius: 0;
-    font-weight: 600;
-    color: #1f2937;
-    text-decoration: none;
-  }
-
-  .mobile-menu a:hover {
-    background: transparent;
-    color: var(--primary);
   }
 }
 
@@ -610,25 +618,33 @@ body {
     width: min(calc(100% - 20px), 620px);
   }
 
-  .investor-progress-floating {
-    position: sticky;
-    top: 84px;
-    right: auto;
-    left: auto;
-    bottom: auto;
-    width: min(calc(100% - 32px), var(--max));
-    margin: 0 auto 16px;
-    z-index: 25;
+  .question-card-head {
+    grid-template-columns: 42px minmax(0, 1fr);
+    gap: 12px;
   }
 
-  .investor-progress-floating-inner {
-    padding: 12px 14px;
-    backdrop-filter: none;
+  .question-number {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
   }
 
   .question-card h3 {
-    font-size: 1.05rem;
-    line-height: 1.35;
+    font-size: 1.06rem;
+    line-height: 1.34;
+  }
+
+  .option-card {
+    padding: 16px 16px 16px 58px;
+  }
+
+  .option-card input[type="radio"] {
+    top: 18px;
+    left: 18px;
+    width: 22px !important;
+    height: 22px !important;
+    min-width: 22px !important;
+    min-height: 22px !important;
   }
 }
 
@@ -639,10 +655,6 @@ body {
   .side-card p {
     font-size: 0.96rem;
     line-height: 1.6;
-  }
-
-  .investor-hero {
-    padding-top: 24px;
   }
 
   .question-card,
@@ -672,19 +684,17 @@ body {
   }
 
   .option-card {
-    padding: 14px 14px 14px 48px;
+    padding: 14px 14px 14px 50px;
     border-radius: 16px;
   }
 
   .option-card input[type="radio"] {
-    top: 14px;
+    top: 15px;
     left: 14px;
-    width: 20px;
-    height: 20px;
-  }
-
-  .option-card input[type="radio"]::after {
-    inset: 3px;
+    width: 20px !important;
+    height: 20px !important;
+    min-width: 20px !important;
+    min-height: 20px !important;
   }
 
   .option-title {
@@ -706,6 +716,10 @@ body {
 }
 
 @media (max-width: 420px) {
+  .investor-hero {
+    padding-top: 24px;
+  }
+
   .investor-hero-copy h1 {
     font-size: 1.9rem;
     letter-spacing: -0.04em;
@@ -744,14 +758,12 @@ body {
   }
 
   .option-card input[type="radio"] {
-    top: 12px;
+    top: 13px;
     left: 12px;
-    width: 18px;
-    height: 18px;
-  }
-
-  .option-card input[type="radio"]::after {
-    inset: 3px;
+    width: 18px !important;
+    height: 18px !important;
+    min-width: 18px !important;
+    min-height: 18px !important;
   }
 
   .option-title {
