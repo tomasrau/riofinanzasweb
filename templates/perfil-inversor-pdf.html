@@ -1,7 +1,11 @@
 <div class="pdf-sheet" id="investor-pdf-sheet">
   <header class="pdf-header">
     <div class="pdf-brand">
-      <div class="pdf-brand-mark">RIO</div>
+      <img
+        src="/logo.png"
+        alt="RIO Servicios Financieros"
+        class="pdf-brand-logo"
+      />
       <div class="pdf-brand-copy">
         <p class="pdf-brand-title">Servicios Financieros</p>
         <p class="pdf-brand-subtitle">Servicios financieros personalizados</p>
@@ -28,11 +32,17 @@
     </div>
 
     <div class="pdf-score-card">
-      <p class="pdf-score-label">Score obtenido</p>
-      <p class="pdf-score-value" data-pdf="score">0</p>
+      <p class="pdf-score-label">Nivel de tolerancia al riesgo</p>
+
+      <div class="pdf-score-head">
+        <p class="pdf-score-value" data-pdf="score">0</p>
+        <p class="pdf-score-caption">Clasificación orientativa</p>
+      </div>
+
       <div class="pdf-score-bar">
         <span data-pdf-bar="scoreBar"></span>
       </div>
+
       <p class="pdf-score-footnote" data-pdf="scoreRange">Rango de referencia: --</p>
     </div>
   </section>
