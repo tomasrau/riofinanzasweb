@@ -237,14 +237,14 @@ function initInvestorTest() {
   });
 
   if (leadForm) {
-    leadForm.addEventListener("submit", (e) => {
+    leadForm.addEventListener("submit", async (e) => {
       e.preventDefault();
-
+  
       const score = getTestScore();
       if (score === null) return;
-
+  
       const profile = getProfileByScore(score);
-
+  
       const leadData = {
         name: document.getElementById("leadName")?.value.trim() || "",
         email: document.getElementById("leadEmail")?.value.trim() || "",
@@ -252,9 +252,24 @@ function initInvestorTest() {
         score,
         profile: profile.badge
       };
-
-      console.log("Lead capturado:", leadData);
-
+  
+      const scriptURL = "https://script.google.com/a/macros/lorenz.ar/s/AKfycbwL5UTqYXXl_5zuJ3zpU11mX9rPjYfwl-evcgt9GklE6iY2CHrxjLEn7cG3QUFjYWlm/exec";
+  
+      try {
+        const response = await fetch(scriptURL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "text/plain;charset=utf-8"
+          },
+          body: JSON.stringify(leadData)
+        });
+  
+        const result = await response.json();
+        console.log("Respuesta Apps Script:", result);
+      } catch (error) {
+        console.error("Error al guardar lead:", error);
+      }
+  
       closeLeadModal();
       renderResult(profile);
     });
