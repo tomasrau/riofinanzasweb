@@ -371,10 +371,10 @@ function getPdfProfileConfig(profileKey) {
         "Evitar concentración excesiva por entusiasmo de corto plazo."
       ],
       allocation: [
-        { name: "Liquidez y bajo riesgo", weight: 15 },
-        { name: "Renta fija (bonos, ON, letras)", weight: 25 },
-        { name: "Renta variable (acciones, CEDEARs, ETFs)", weight: 45 },
-        { name: "Activos alternativos / cobertura (oro, commodities, cripto, etc.)", weight: 15 }
+        { name: "Liquidez y bajo riesgo", value: 15 },
+        { name: "Renta fija (bonos, ON, letras)", value: 25 },
+        { name: "Renta variable (acciones, CEDEARs, ETFs)", value: 45 },
+        { name: "Activos alternativos / cobertura (oro, commodities, cripto, etc.)", value: 15 }
       ]
     },
     agresivo: {
@@ -515,14 +515,16 @@ function setPdfAllocation(host, allocation = []) {
   container.innerHTML = "";
 
   allocation.forEach((item) => {
+    const percent = Number(item.value ?? item.weight ?? 0);
+
     const row = document.createElement("div");
     row.className = "pdf-allocation-row";
     row.innerHTML = `
       <div class="pdf-allocation-asset">${item.name}</div>
       <div class="pdf-allocation-bar">
-        <span style="width: ${Number(item.weight) || 0}%;"></span>
+        <span style="width: ${percent}%;"></span>
       </div>
-      <div class="pdf-allocation-weight">${Number(item.weight) || 0}%</div>
+      <div class="pdf-allocation-weight">${percent}%</div>
     `;
     container.appendChild(row);
   });
