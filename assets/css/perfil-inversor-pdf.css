@@ -314,12 +314,12 @@
 
 /* Ayuda para render hidden en DOM antes de exportar */
 .pdf-render-host {
-  position: fixed;
-  left: -99999px;
+  position: absolute;
+  left: 0;
   top: 0;
   width: 794px;
-  opacity: 1;
+  background: #fff;
   pointer-events: none;
   z-index: -1;
-  background: #fff;
+  overflow: hidden;
 }
