@@ -78,6 +78,14 @@ const profiles = {
   }
 };
 
+function waitForPdfRender() {
+  return new Promise((resolve) => {
+    requestAnimationFrame(() => {
+      requestAnimationFrame(resolve);
+    });
+  });
+}
+
 function initMobileMenu() {
   const menuToggle = document.getElementById("menuToggle");
   const mobileMenu = document.getElementById("mobileMenu");
@@ -433,9 +441,13 @@ async function loadPdfAssets() {
 }
 
 function createPdfHost(templateHtml, templateCss) {
+  const existingHost = document.querySelector(".pdf-render-host");
+  if (existingHost) existingHost.remove();
+
   const host = document.createElement("div");
   host.className = "pdf-render-host";
   host.setAttribute("aria-hidden", "true");
+
   host.innerHTML = `
     <style>${templateCss}</style>
     ${templateHtml}
@@ -605,6 +617,8 @@ async function downloadResultPdf() {
       throw new Error("No se encontró el contenedor principal del PDF.");
     }
 
+    await waitForPdfRender();
+
     const options = {
       margin: 0,
       filename: buildPdfFilename(data),
@@ -612,12 +626,19 @@ async function downloadResultPdf() {
       html2canvas: {
         scale: 2,
         useCORS: true,
-        backgroundColor: "#ffffff"
+        backgroundColor: "#ffffff",
+        scrollX: 0,
+        scrollY: 0,
+        windowWidth: 794,
+        windowHeight: sheet.scrollHeight || 1123
       },
       jsPDF: {
         unit: "mm",
         format: "a4",
         orientation: "portrait"
+      },
+      pagebreak: {
+        mode: ["css", "legacy"]
       }
     };
 
