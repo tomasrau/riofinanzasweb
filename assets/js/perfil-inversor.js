@@ -86,6 +86,28 @@ function waitForPdfRender(ms = 120) {
   });
 }
 
+function waitForImages(container) {
+  const images = Array.from(container.querySelectorAll("img"));
+
+  if (!images.length) {
+    return Promise.resolve();
+  }
+
+  return Promise.all(
+    images.map((img) => {
+      if (img.complete && img.naturalWidth > 0) {
+        return Promise.resolve();
+      }
+
+      return new Promise((resolve) => {
+        const done = () => resolve();
+        img.addEventListener("load", done, { once: true });
+        img.addEventListener("error", done, { once: true });
+      });
+    })
+  );
+}
+
 function initMobileMenu() {
   const menuToggle = document.getElementById("menuToggle");
   const mobileMenu = document.getElementById("mobileMenu");
@@ -629,13 +651,15 @@ async function downloadResultPdf() {
     }
 
     await waitForPdfRender(180);
+    await waitForImages(sheet);
+    await waitForPdfRender(120);
 
     const sheetWidth = Math.round(sheet.getBoundingClientRect().width) || 794;
     const sheetHeight = Math.round(sheet.scrollHeight);
 
     host.style.height = `${sheetHeight}px`;
 
-    await waitForPdfRender(120);
+    await waitForPdfRender(100);
 
     const canvas = await html2canvas(sheet, {
       scale: 2,
@@ -692,22 +716,18 @@ async function downloadResultPdf() {
     const pageWidth = 210;
     const pageHeight = 297;
 
-    const imgWidth = pageWidth;
-    const imgHeight = (canvas.height * imgWidth) / canvas.width;
+    let imgWidth = pageWidth;
+    let imgHeight = (canvas.height * imgWidth) / canvas.width;
 
-    let heightLeft = imgHeight;
-    let position = 0;
-
-    pdf.addImage(imgData, "JPEG", 0, position, imgWidth, imgHeight);
-    heightLeft -= pageHeight;
-
-    while (heightLeft > 0) {
-      position = heightLeft - imgHeight;
-      pdf.addPage();
-      pdf.addImage(imgData, "JPEG", 0, position, imgWidth, imgHeight);
-      heightLeft -= pageHeight;
+    if (imgHeight > pageHeight) {
+      imgHeight = pageHeight;
+      imgWidth = (canvas.width * imgHeight) / canvas.height;
     }
 
+    const x = (pageWidth - imgWidth) / 2;
+    const y = (pageHeight - imgHeight) / 2;
+
+    pdf.addImage(imgData, "JPEG", x, y, imgWidth, imgHeight);
     pdf.save(buildPdfFilename(data));
   } finally {
     host.remove();
