@@ -4,8 +4,8 @@ const mobileMenu = document.getElementById("mobileMenu");
 
 if (menuToggle && mobileMenu) {
   menuToggle.addEventListener("click", () => {
-    const isOpen = mobileMenu.classList.toggle("is-open");
-    menuToggle.setAttribute("aria-expanded", String(isOpen));
+    mobileMenu.style.display =
+      mobileMenu.style.display === "grid" ? "none" : "grid";
   });
 }
 
