@@ -251,7 +251,9 @@ function initInvestorTest() {
         email: document.getElementById("leadEmail")?.value.trim() || "",
         whatsapp: document.getElementById("leadWhatsapp")?.value.trim() || "",
         score,
-        profile: profile.badge
+        profile: profile.badge,
+        page: window.location.href,
+        userAgent: navigator.userAgent
       };
   
       const scriptURL = "https://script.google.com/macros/s/AKfycbwL5UTqYXXl_5zuJ3zpU11mX9rPjYfwl-evcgt9GklE6iY2CHrxjLEn7cG3QUFjYWlm/exec";
