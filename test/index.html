@@ -12,10 +12,13 @@
   <meta name="theme-color" content="#1800ad" />
 
   <link rel="icon" type="image/png" href="/favicon.png" />
-  <link rel="stylesheet" href="/style.css" />
-  <link rel="stylesheet" href="/perfil-inversor.css" />
+  <link rel="stylesheet" href="/assets/css/style.css" />
+  <link rel="stylesheet" href="/assets/css/perfil-inversor.css" />
 </head>
-<body>
+<body
+  data-pdf-template="/templates/perfil-inversor-pdf.html"
+  data-pdf-css="/assets/css/perfil-inversor-pdf.css"
+>
   <header class="topbar">
     <div class="container">
       <nav class="nav nav-investor" id="nav">
@@ -35,7 +38,7 @@
         <div class="nav-actions nav-actions-investor">
           <a class="btn btn-secondary" href="/#servicios">Ver servicios</a>
           <a class="btn btn-primary" href="#test">Comenzar test</a>
-          <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
+          <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">☰</button>
         </div>
       </nav>
 
@@ -44,7 +47,7 @@
         <a href="/#proceso">Cómo trabajamos</a>
         <a href="/#diferenciales">Diferenciales</a>
         <a href="/test/">Perfil de inversor</a>
-        <a href="/faq">FAQ</a>
+        <a href="/#faq">FAQ</a>
         <a href="/#contacto">Contacto</a>
       </div>
     </div>
@@ -581,31 +584,39 @@
     <section class="section investor-result-section" id="resultado" hidden>
       <div class="container">
         <div class="result-card reveal" id="resultCard">
-          <div class="result-badge" id="resultBadge">Perfil</div>
+          <div class="result-badge" id="resultBadge" data-result-profile-name>Perfil</div>
           <h2 id="resultTitle">Tu perfil de inversor</h2>
-          <p class="result-summary" id="resultSummary"></p>
+          <p class="result-summary" id="resultSummary" data-result-summary></p>
 
           <div class="result-grid">
             <div class="result-box">
               <strong>Enfoque general</strong>
-              <p id="resultApproach"></p>
+              <p id="resultApproach" data-result-approach></p>
             </div>
             <div class="result-box">
               <strong>Tolerancia al riesgo</strong>
-              <p id="resultRisk"></p>
+              <p id="resultRisk" data-result-risk></p>
             </div>
             <div class="result-box">
               <strong>Horizonte compatible</strong>
-              <p id="resultHorizon"></p>
+              <p id="resultHorizon" data-result-horizon></p>
             </div>
             <div class="result-box">
               <strong>Siguiente paso sugerido</strong>
-              <p id="resultNextStep"></p>
+              <p id="resultNextStep" data-result-next-step></p>
             </div>
           </div>
 
+          <div id="resultPdfMeta" hidden aria-hidden="true">
+            <span id="resultScoreValue" data-result-score></span>
+            <span id="resultLeadName" data-result-full-name></span>
+            <span id="resultLeadEmail" data-result-email></span>
+            <span id="resultLeadWhatsapp" data-result-whatsapp></span>
+            <span id="resultMainGoal" data-result-goal></span>
+          </div>
+
           <div class="result-cta-row">
-            <a href="index.html#contacto" class="btn btn-primary">Solicitar una consulta</a>
+            <a href="/#contacto" class="btn btn-primary">Solicitar una consulta</a>
             <button type="button" class="btn btn-secondary" id="downloadPdfBtn">Descargar resultado en PDF</button>
             <a href="#test" class="btn btn-secondary" id="retakeTest">Rehacer test</a>
           </div>
@@ -643,8 +654,8 @@
           </div>
 
           <div>
-            <label for="leadWhatsapp">WhatsApp</label>
-            <input type="text" id="leadWhatsapp" name="leadWhatsapp" required/>
+            <label for="leadWhatsapp">WhatsApp *</label>
+            <input type="text" id="leadWhatsapp" name="leadWhatsapp" required />
           </div>
 
           <div class="lead-checkbox">
@@ -655,17 +666,17 @@
           </div>
 
           <button type="submit" class="btn btn-primary">Ver resultado</button>
-          <div class="lead-form-status" id="leadFormStatus"></div>
+          <div class="lead-form-status" id="leadFormStatus" aria-live="polite"></div>
         </form>
       </div>
     </div>
   </div>
 
- <footer>
+  <footer>
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="#inicio" class="brand" aria-label="RIO Servicios Financieros">
+          <a href="/" class="brand" aria-label="RIO Servicios Financieros">
             <img
               src="/logo.png"
               alt="RIO Servicios Financieros"
@@ -680,11 +691,11 @@
         <div class="footer-col">
           <h4>Secciones</h4>
           <div class="footer-links">
-            <a href="#servicios">Servicios</a>
-            <a href="#proceso">Cómo trabajamos</a>
-            <a href="#diferenciales">Diferenciales</a>
-            <a href="#faq">FAQ</a>
-            <a href="#contacto">Contacto</a>
+            <a href="/#servicios">Servicios</a>
+            <a href="/#proceso">Cómo trabajamos</a>
+            <a href="/#diferenciales">Diferenciales</a>
+            <a href="/#faq">FAQ</a>
+            <a href="/#contacto">Contacto</a>
           </div>
         </div>
 
@@ -693,7 +704,7 @@
           <div class="footer-links">
             <a href="mailto:riofinanzas2026@gmail.com">riofinanzas2026@gmail.com</a>
             <a href="https://wa.me/message/Q4LZOLT235M4D1" target="_blank" rel="noopener">WhatsApp</a>
-            <a href="#contacto">Solicitar consulta</a>
+            <a href="/#contacto">Solicitar consulta</a>
           </div>
         </div>
       </div>
@@ -705,11 +716,9 @@
     </div>
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/3.0.3/jspdf.umd.min.js"></script>
-  <script src="/perfil-inversor.js"></script>
-  <script src="/quotes-config.js"></script>
-  <script src="/script.js"></script>
-  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script src="/assets/js/perfil-inversor.js"></script>
+  <script src="/assets/js/quotes-config.js"></script>
+  <script src="/assets/js/script.js"></script>
 </body>
 </html>
