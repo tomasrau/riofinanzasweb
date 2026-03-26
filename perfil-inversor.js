@@ -1,4 +1,5 @@
 const totalQuestions = 10;
+let currentProfileForPdf = null;
 
 const profiles = {
   conservador: {
@@ -174,6 +175,8 @@ function closeLeadModal() {
 }
 
 function renderResult(profile) {
+  currentProfileForPdf = profile;
+
   document.getElementById("resultBadge").textContent = profile.badge;
   document.getElementById("resultTitle").textContent = profile.title;
   document.getElementById("resultSummary").textContent = profile.summary;
@@ -317,3 +320,99 @@ document.addEventListener("DOMContentLoaded", () => {
   initRevealAnimations();
   initInvestorTest();
 });
+
+
+function fillPdfTemplate(profile) {
+  const now = new Date();
+  const formattedDate = now.toLocaleDateString("es-AR", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric"
+  });
+
+  document.getElementById("pdfDate").textContent = formattedDate;
+  document.getElementById("pdfBadge").textContent = profile.badge;
+  document.getElementById("pdfTitle").textContent = profile.title;
+  document.getElementById("pdfSummary").textContent = profile.summary;
+  document.getElementById("pdfApproach").textContent = profile.approach;
+  document.getElementById("pdfRisk").textContent = profile.risk;
+  document.getElementById("pdfHorizon").textContent = profile.horizon;
+  document.getElementById("pdfNextStep").textContent = profile.nextStep;
+}
+
+async function downloadResultPdf() {
+  if (!currentProfileForPdf) return;
+
+  fillPdfTemplate(currentProfileForPdf);
+
+  const template = document.getElementById("pdfResultTemplate");
+  if (!template) return;
+
+  const canvas = await html2canvas(template, {
+    scale: 2,
+    backgroundColor: "#ffffff",
+    useCORS: true
+  });
+
+  const imgData = canvas.toDataURL("image/png");
+  const { jsPDF } = window.jspdf;
+
+  const pdf = new jsPDF({
+    orientation: "portrait",
+    unit: "mm",
+    format: "a4"
+  });
+
+  const pageWidth = pdf.internal.pageSize.getWidth();
+  const pageHeight = pdf.internal.pageSize.getHeight();
+
+  const margin = 10;
+  const imgWidth = pageWidth - margin * 2;
+  const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+  if (imgHeight <= pageHeight - margin * 2) {
+    pdf.addImage(imgData, "PNG", margin, margin, imgWidth, imgHeight);
+  } else {
+    let heightLeft = imgHeight;
+    let position = margin;
+
+    pdf.addImage(imgData, "PNG", margin, position, imgWidth, imgHeight);
+    heightLeft -= (pageHeight - margin * 2);
+
+    while (heightLeft > 0) {
+      position = heightLeft - imgHeight + margin;
+      pdf.addPage();
+      pdf.addImage(imgData, "PNG", margin, position, imgWidth, imgHeight);
+      heightLeft -= (pageHeight - margin * 2);
+    }
+  }
+
+  const profileSlug = currentProfileForPdf.badge
+    .toLowerCase()
+    .replace(/\s+/g, "-")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+
+  pdf.save(`resultado-${profileSlug}-rio.pdf`);
+}
+
+function initPdfDownload() {
+  const downloadBtn = document.getElementById("downloadPdfBtn");
+  if (!downloadBtn) return;
+
+  downloadBtn.addEventListener("click", async () => {
+    downloadBtn.disabled = true;
+    const originalText = downloadBtn.textContent;
+    downloadBtn.textContent = "Generando PDF...";
+
+    try {
+      await downloadResultPdf();
+    } catch (error) {
+      console.error("Error al generar PDF:", error);
+      alert("No se pudo generar el PDF en este momento.");
+    } finally {
+      downloadBtn.disabled = false;
+      downloadBtn.textContent = originalText;
+    }
+  });
+}
