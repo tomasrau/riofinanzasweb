@@ -967,7 +967,6 @@ function initInvestorTest() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  initMobileMenu();
   initRevealAnimations();
   initInvestorTest();
   initPdfDownload();
