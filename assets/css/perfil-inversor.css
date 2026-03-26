@@ -536,87 +536,111 @@
   }
 }
 
-/* =========================
-   HARDENING RESPONSIVE
-========================= */
+/* =========================================
+   FIX IOS SAFARI + UNIFICACIÓN MOBILE MENU
+========================================= */
 
-.investor-layout,
-.investor-form,
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  overflow-x: hidden;
+}
+
 .question-card,
 .question-card-head,
-.options-group,
 .option-card,
 .option-content,
-.result-grid,
-.result-box {
+.option-title,
+.option-text,
+.question-card h3 {
   min-width: 0;
 }
 
+/* Evita cortes feos de palabras en iOS */
+.question-card h3,
+.option-title,
+.option-text {
+  overflow-wrap: break-word;
+  word-break: normal;
+  hyphens: none;
+}
+
+/* Estructura estable para consigna */
 .question-card-head {
   grid-template-columns: 46px minmax(0, 1fr);
   align-items: start;
+  gap: 14px;
 }
 
-.question-card h3 {
-  min-width: 0;
-  overflow-wrap: anywhere;
-  word-break: normal;
-  hyphens: auto;
-}
-
+/* Estructura estable para opciones */
 .option-card {
-  grid-template-columns: 22px minmax(0, 1fr);
+  grid-template-columns: 28px minmax(0, 1fr);
   align-items: start;
+  gap: 14px;
 }
 
+/* Radio custom para evitar render raro de Safari iOS */
 .option-card input[type="radio"] {
-  margin: 3px 0 0;
-  flex-shrink: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  margin: 2px 0 0;
+  border: 2px solid #8d94a5;
+  border-radius: 50%;
+  background: #ffffff;
+  display: block;
+  position: relative;
+  flex: 0 0 22px;
+  cursor: pointer;
+}
+
+.option-card input[type="radio"]::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  background: var(--primary);
+  transform: scale(0);
+  transition: transform 0.18s ease;
+}
+
+.option-card input[type="radio"]:checked {
+  border-color: var(--primary);
+}
+
+.option-card input[type="radio"]:checked::after {
+  transform: scale(1);
+}
+
+.option-card input[type="radio"]:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(24, 0, 173, 0.12);
 }
 
 .option-content {
-  min-width: 0;
+  display: grid;
+  gap: 4px;
 }
 
-.option-title,
+.option-title {
+  line-height: 1.32;
+}
+
 .option-text {
-  min-width: 0;
-  overflow-wrap: anywhere;
-  word-break: normal;
-  hyphens: auto;
+  line-height: 1.42;
 }
 
 /* =========================
-   MOBILE MENU ROBUSTO
+   MENÚ MOBILE: MISMO CRITERIO QUE INDEX
+   Sacamos el dropdown tipo card flotante
 ========================= */
-
-.menu-toggle {
-  display: none;
-  align-items: center;
-  justify-content: center;
-  width: 46px;
-  height: 46px;
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  background: #fff;
-  color: #111827;
-  font-size: 1.25rem;
-  line-height: 1;
-  cursor: pointer;
-  flex-shrink: 0;
-}
-
-.mobile-menu {
-  display: none;
-}
-
-.mobile-menu.is-open {
-  display: grid;
-}
 
 @media (max-width: 900px) {
   .topbar .container {
-    position: relative;
+    position: static;
   }
 
   .nav-investor {
@@ -630,168 +654,99 @@
   }
 
   .menu-toggle {
-    display: inline-flex;
+    display: inline-grid;
+    place-items: center;
   }
 
   .mobile-menu {
-    position: absolute;
-    top: calc(100% + 10px);
-    left: 16px;
-    right: 16px;
-    z-index: 120;
-    padding: 12px;
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    background: #fff;
-    box-shadow: 0 18px 40px rgba(17, 24, 39, 0.12);
-    gap: 8px;
+    position: static;
+    display: none;
+    gap: 12px;
+    padding: 14px 0 20px;
+    border-top: 1px solid var(--border);
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    z-index: auto;
   }
 
   .mobile-menu a {
     display: block;
-    padding: 12px 14px;
-    border-radius: 14px;
-    color: #111827;
-    text-decoration: none;
+    padding: 0;
+    border-radius: 0;
     font-weight: 600;
+    color: #1f2937;
+    text-decoration: none;
   }
 
   .mobile-menu a:hover {
-    background: var(--bg-soft);
+    background: transparent;
+    color: var(--primary);
   }
 }
 
 /* =========================
-   TABLET
+   PROGRESO DEL TEST:
+   en mobile mejor sticky en flujo,
+   no fixed tapando preguntas
 ========================= */
 
 @media (max-width: 820px) {
-  .investor-hero {
-    padding-top: 34px;
-    padding-bottom: 24px;
-  }
-
-  .investor-hero-copy h1 {
-    font-size: clamp(2rem, 8vw, 3rem);
-    line-height: 1.02;
-  }
-
-  .question-card,
-  .side-card,
-  .result-card,
-  .lead-modal-content {
-    padding: 22px;
-  }
-
-  .question-card-head {
-    grid-template-columns: 42px minmax(0, 1fr);
-    gap: 12px;
-  }
-
-  .question-number {
-    width: 42px;
-    height: 42px;
-    border-radius: 12px;
-  }
-
-  .question-card h3 {
-    font-size: 1.05rem;
-    line-height: 1.35;
-  }
-
-  .option-card {
-    grid-template-columns: 20px minmax(0, 1fr);
-    gap: 12px;
-    padding: 15px;
-  }
-
-  .option-title {
-    font-size: 0.98rem;
-    line-height: 1.35;
-  }
-
-  .option-text {
-    font-size: 0.9rem;
-    line-height: 1.45;
-  }
-
-  .result-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .result-cta-row {
-    flex-direction: column;
-  }
-
-  .result-cta-row .btn {
-    width: 100%;
-  }
-
-  .lead-modal-dialog {
-    margin: 24px auto;
-    width: min(calc(100% - 20px), 620px);
-  }
-
   .investor-progress-floating {
-    right: 16px;
-    left: 16px;
-    width: auto;
-    bottom: 16px;
+    position: sticky;
+    top: 84px;
+    right: auto;
+    left: auto;
+    bottom: auto;
+    width: min(calc(100% - 32px), var(--max));
+    margin: 0 auto 16px;
+    z-index: 25;
   }
 
   .investor-progress-floating-inner {
-    padding: 12px 14px;
+    backdrop-filter: none;
   }
 }
 
-/* =========================
-   MOBILE
-========================= */
-
 @media (max-width: 640px) {
-  .investor-hero-copy p,
-  .section-subtitle,
-  .result-summary,
-  .side-card p {
-    font-size: 0.96rem;
-    line-height: 1.6;
-  }
-
-  .hero-proof {
-    gap: 8px;
-  }
-
-  .proof-chip {
-    font-size: 0.84rem;
-  }
-
-  .question-card,
-  .side-card,
-  .result-card {
+  .question-card {
     padding: 18px;
     border-radius: 20px;
   }
 
   .question-card-head {
-    grid-template-columns: 38px minmax(0, 1fr);
-    gap: 10px;
+    grid-template-columns: 40px minmax(0, 1fr);
+    gap: 12px;
     margin-bottom: 16px;
   }
 
   .question-number {
-    width: 38px;
-    height: 38px;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
     font-size: 0.9rem;
-    border-radius: 11px;
   }
 
   .question-card h3 {
     font-size: 1rem;
+    line-height: 1.32;
   }
 
   .option-card {
+    grid-template-columns: 26px minmax(0, 1fr);
+    gap: 12px;
     padding: 14px;
     border-radius: 16px;
+  }
+
+  .option-card input[type="radio"] {
+    width: 20px;
+    height: 20px;
+    flex-basis: 20px;
+  }
+
+  .option-card input[type="radio"]::after {
+    inset: 3px;
   }
 
   .option-title {
@@ -802,62 +757,37 @@
     font-size: 0.87rem;
   }
 
-  .investor-progress-title,
-  .investor-progress-counter {
-    font-size: 0.86rem;
+  .investor-progress-floating {
+    top: 80px;
   }
 }
 
-/* =========================
-   SMALL MOBILE
-========================= */
-
 @media (max-width: 420px) {
-  .investor-hero {
-    padding-top: 24px;
-  }
-
-  .investor-hero-copy h1 {
-    font-size: 1.9rem;
-    letter-spacing: -0.04em;
-  }
-
-  .btn-row {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
-
-  .btn-row .btn {
-    width: 100%;
-  }
-
-  .question-card,
-  .side-card,
-  .result-card,
-  .lead-modal-content {
+  .question-card {
     padding: 16px;
   }
 
   .question-card-head {
-    grid-template-columns: 34px minmax(0, 1fr);
+    grid-template-columns: 36px minmax(0, 1fr);
+    gap: 10px;
   }
 
   .question-number {
-    width: 34px;
-    height: 34px;
+    width: 36px;
+    height: 36px;
     font-size: 0.82rem;
   }
 
   .option-card {
-    grid-template-columns: 18px minmax(0, 1fr);
+    grid-template-columns: 24px minmax(0, 1fr);
     gap: 10px;
     padding: 12px;
   }
 
   .option-card input[type="radio"] {
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
+    flex-basis: 18px;
   }
 
   .option-title {
@@ -866,14 +796,5 @@
 
   .option-text {
     font-size: 0.84rem;
-  }
-
-  .investor-progress-floating {
-    bottom: 12px;
-  }
-
-  .investor-progress-floating-inner {
-    border-radius: 16px;
-    padding: 10px 12px;
   }
 }
