@@ -424,6 +424,12 @@
   gap: 16px;
 }
 
+.lead-form-status {
+  font-size: 0.92rem;
+  color: var(--muted);
+  min-height: 20px;
+}
+
 .lead-checkbox {
   font-size: 0.92rem;
   color: var(--muted);
