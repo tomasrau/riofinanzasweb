@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Test de Perfil de Inversor | RIO</title>
+  <meta
+    name="description"
+    content="Realizá el test de perfil de inversor de RIO y obtené una orientación inicial según tus objetivos, horizonte y tolerancia al riesgo."
+  />
+  <meta name="theme-color" content="#1800ad" />
+
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="perfil-inversor.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container">
+      <nav class="nav" id="nav">
+        <a href="index.html#inicio" class="brand" aria-label="RIO Servicios Financieros">
+          <img src="logo.png" alt="RIO Servicios Financieros" class="brand-logo" />
+        </a>
+
+        <div class="nav-links">
+          <a href="index.html#servicios">Servicios</a>
+          <a href="index.html#proceso">Cómo trabajamos</a>
+          <a href="index.html#diferenciales">Diferenciales</a>
+          <a href="perfil-inversor.html" class="nav-link-active">Perfil de inversor</a>
+          <a href="index.html#contacto">Contacto</a>
+        </div>
+
+        <div class="nav-actions">
+          <a class="btn btn-secondary" href="index.html#contacto">Contacto</a>
+          <a class="btn btn-primary" href="#test">Comenzar test</a>
+          <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
+        </div>
+      </nav>
+
+      <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html#servicios">Servicios</a>
+        <a href="index.html#proceso">Cómo trabajamos</a>
+        <a href="index.html#diferenciales">Diferenciales</a>
+        <a href="perfil-inversor.html">Perfil de inversor</a>
+        <a href="index.html#contacto">Contacto</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="investor-page">
+    <section class="investor-hero">
+      <div class="container">
+        <div class="investor-hero-grid">
+          <div class="investor-hero-copy reveal">
+            <div class="eyebrow">Herramienta orientativa</div>
+            <h1>Test de perfil de inversor</h1>
+            <p>
+              Identificá tu perfil en función de tus objetivos, tu horizonte de inversión
+              y tu tolerancia al riesgo. El resultado es orientativo y puede ayudarte a
+              ordenar una primera conversación.
+            </p>
+
+            <div class="btn-row">
+              <a href="#test" class="btn btn-primary">Iniciar test</a>
+              <a href="index.html#contacto" class="btn btn-secondary">Hablar con RIO</a>
+            </div>
+
+            <div class="hero-proof investor-proof">
+              <div class="proof-chip">10 preguntas</div>
+              <div class="proof-chip">Resultado inmediato</div>
+              <div class="proof-chip">Orientación inicial</div>
+            </div>
+          </div>
+
+          <aside class="investor-hero-card reveal">
+            <h3>Qué evalúa este test</h3>
+            <div class="investor-mini-list">
+              <div class="investor-mini-item">
+                <strong>Horizonte temporal</strong>
+                <span>En qué plazo pensás utilizar ese capital.</span>
+              </div>
+              <div class="investor-mini-item">
+                <strong>Tolerancia al riesgo</strong>
+                <span>Cómo reaccionás frente a la volatilidad y las caídas.</span>
+              </div>
+              <div class="investor-mini-item">
+                <strong>Objetivo financiero</strong>
+                <span>Preservación, renta, crecimiento o mayor retorno potencial.</span>
+              </div>
+              <div class="investor-mini-item">
+                <strong>Experiencia previa</strong>
+                <span>Nivel de familiaridad con instrumentos e inversiones.</span>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section investor-test-section" id="test">
+      <div class="container">
+        <div class="investor-head reveal">
+          <div>
+            <div class="eyebrow">Evaluación</div>
+            <h2 class="section-title">Completá el cuestionario</h2>
+            <p class="section-subtitle">
+              Respondé según tu situación real. No hay respuestas correctas o incorrectas:
+              el objetivo es identificar un perfil orientativo.
+            </p>
+          </div>
+
+          <div class="investor-progress-wrap">
+            <div class="investor-progress-label">
+              Progreso: <span id="progressText">0/10</span>
+            </div>
+            <div class="investor-progress-bar">
+              <div class="investor-progress-fill" id="progressFill"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="investor-layout">
+          <form id="investorTestForm" class="investor-form reveal">
+            <div class="question-card">
+              <div class="question-number">01</div>
+              <h3>¿Cuál es tu principal objetivo al invertir?</h3>
+              <div class="options-group">
+                <label class="option-card"><input type="radio" name="q1" value="1" /> Preservar el capital</label>
+                <label class="option-card"><input type="radio" name="q1" value="2" /> Obtener una renta moderada</label>
+                <label class="option-card"><input type="radio" name="q1" value="3" /> Crecer de forma sostenida</label>
+                <label class="option-card"><input type="radio" name="q1" value="4" /> Maximizar retorno asumiendo mayor riesgo</label>
+              </div>
+            </div>
+
+            <div class="question-card">
+              <div class="question-number">02</div>
+              <h3>¿En qué plazo estimás que podrías necesitar ese dinero?</h3>
+              <div class="options-group">
+                <label class="option-card"><input type="radio" name="q2" value="1" /> Menos de 1 año</label>
+                <label class="option-card"><input type="radio" name="q2" value="2" /> Entre 1 y 3 años</label>
+                <label class="option-card"><input type="radio" name="q2" value="3" /> Entre 3 y 5 años</label>
+                <label class="option-card"><input type="radio" name="q2" value="4" /> Más de 5 años</label>
+              </div>
+            </div>
+
+            <div class="question-card">
+              <div class="question-number">03</div>
+              <h3>¿Qué porcentaje de caída temporal estarías dispuesto a tolerar?</h3>
+              <div class="options-group">
+                <label class="option-card"><input type="radio" name="q3" value="1" /> Casi ninguna</label>
+                <label class="option-card"><input type="radio" name="q3" value="2" /> Una caída pequeña</label>
+                <label class="option-card"><input type="radio" name="q3" value="3" /> Una caída moderada</label>
+                <label class="option-card"><input type="radio" name="q3" value="4" /> Una caída importante si el potencial lo justifica</label>
+              </div>
+            </div>
+
+            <div class="question-card">
+              <div class="question-number">04</div>
+              <h3>Si una inversión baja 10% en poco tiempo, ¿cómo reaccionarías?</h3>
+              <div class="options-group">
+                <label class="option-card"><input type="radio" name="q4" value="1" /> Vendería para evitar más pérdidas</label>
+                <label class="option-card"><input type="radio" name="q4" value="2" /> Esperaría con preocupación</label>
+                <label class="option-card"><input type="radio" name="q4" value="3" /> Mantendría la inversión si la estrategia sigue vigente</label>
+                <label class="option-card"><input type="radio" name="q4" value="4" /> Podría aprovechar para comprar más</label>
+              </div>
+            </div>
+
+            <div class="question-card">
+              <div class="question-number">05</div>
+              <h3>¿Qué experiencia previa tenés con inversiones?</h3>
+              <div class="options-group">
+                <label class="option-card"><input type="radio" name="q5" value="1" /> Ninguna</label>
+                <label class="option-card"><input type="radio" name="q5" value="2" /> Básica</label>
+                <label class="option-card"><input type="radio" name="q5" value="3" /> Intermedia</label>
+                <label class="option-card"><input type="radio" name="q5" value="4" /> Avanzada</label>
+              </div>
+            </div>
+
+            <div class="question-card">
+              <div class="question-number">06</div>
+              <h3>¿Qué prioridad le das a la liquidez inmediata?</h3>
+              <div class="options-group">
+                <label class="option-card"><input type="radio" name="q6" value="1" /> Muy alta</label>
+                <label class="option-card"><input type="radio" name="q6" value="2" /> Alta</label>
+                <label class="option-card"><input type="radio" name="q6" value="3" /> Media</label>
+                <label class="option-card"><input type="radio" name="q6" value="4" /> Baja</label>
+              </div>
+            </div>
+
+            <div class="question-card">
+              <div class="question-number">07</div>
+              <h3>¿Qué parte de tus ahorros representa este capital?</h3>
+              <div class="options-group">
+                <label class="option-card"><input type="radio" name="q7" value="1" /> Casi todo mi capital disponible</label>
+                <label class="option-card"><input type="radio" name="q7" value="2" /> Una parte importante</label>
+                <label class="option-card"><input type="radio" name="q7" value="3" /> Una parte acotada</label>
+                <label class="option-card"><input type="radio" name="q7" value="4" /> Una parte menor de mi patrimonio</label>
+              </div>
+            </div>
+
+            <div class="question-card">
+              <div class="question-number">08</div>
+              <h3>¿Cómo describirías tu situación de ingresos?</h3>
+              <div class="options-group">
+                <label class="option-card"><input type="radio" name="q8" value="1" /> Inestable o variable</label>
+                <label class="option-card"><input type="radio" name="q8" value="2" /> Relativamente estable</label>
+                <label class="option-card"><input type="radio" name="q8" value="3" /> Estable</label>
+                <label class="option-card"><input type="radio" name="q8" value="4" /> Estable y con capacidad de ahorro constante</label>
+              </div>
+            </div>
+
+            <div class="question-card">
+              <div class="question-number">09</div>
+              <h3>¿Qué relación preferís entre riesgo y retorno?</h3>
+              <div class="options-group">
+                <label class="option-card"><input type="radio" name="q9" value="1" /> Menor riesgo, aunque el retorno sea bajo</label>
+                <label class="option-card"><input type="radio" name="q9" value="2" /> Riesgo moderado con retorno razonable</label>
+                <label class="option-card"><input type="radio" name="q9" value="3" /> Acepto riesgo para buscar mejores resultados</label>
+                <label class="option-card"><input type="radio" name="q9" value="4" /> Priorizo retorno, aunque implique alta volatilidad</label>
+              </div>
+            </div>
+
+            <div class="question-card">
+              <div class="question-number">10</div>
+              <h3>¿Qué harías si tu cartera tiene meses de alta volatilidad?</h3>
+              <div class="options-group">
+                <label class="option-card"><input type="radio" name="q10" value="1" /> Saldría rápidamente</label>
+                <label class="option-card"><input type="radio" name="q10" value="2" /> Reduciría exposición</label>
+                <label class="option-card"><input type="radio" name="q10" value="3" /> Mantendría la estrategia con seguimiento</label>
+                <label class="option-card"><input type="radio" name="q10" value="4" /> Aprovecharía oportunidades si el análisis acompaña</label>
+              </div>
+            </div>
+
+            <div class="investor-form-actions">
+              <button type="button" id="openLeadModal" class="btn btn-primary">Ver resultado</button>
+            </div>
+
+            <div class="investor-disclaimer">
+              Este test es orientativo y no constituye una recomendación de inversión ni reemplaza
+              una evaluación profesional personalizada.
+            </div>
+          </form>
+
+          <aside class="investor-side-panel reveal">
+            <div class="side-card">
+              <h3>¿Para qué sirve este test?</h3>
+              <p>
+                Te ayuda a ordenar una primera aproximación sobre tu perfil de inversión
+                en función de tus objetivos, tu horizonte temporal y tu tolerancia al riesgo.
+              </p>
+            </div>
+
+            <div class="side-card">
+              <h3>Resultado orientativo</h3>
+              <p>
+                El resultado no reemplaza un análisis integral. Sirve como punto de partida
+                para una conversación más precisa sobre estrategia y asignación.
+              </p>
+            </div>
+
+            <div class="side-card">
+              <h3>Qué recibís</h3>
+              <ul class="side-list">
+                <li>Identificación de perfil</li>
+                <li>Descripción general del perfil</li>
+                <li>Rango estimado de tolerancia al riesgo</li>
+                <li>Siguiente paso sugerido</li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section investor-result-section" id="resultado" hidden>
+      <div class="container">
+        <div class="result-card reveal" id="resultCard">
+          <div class="result-badge" id="resultBadge">Perfil</div>
+          <h2 id="resultTitle">Tu perfil de inversor</h2>
+          <p class="result-summary" id="resultSummary"></p>
+
+          <div class="result-grid">
+            <div class="result-box">
+              <strong>Enfoque general</strong>
+              <p id="resultApproach"></p>
+            </div>
+            <div class="result-box">
+              <strong>Tolerancia al riesgo</strong>
+              <p id="resultRisk"></p>
+            </div>
+            <div class="result-box">
+              <strong>Horizonte compatible</strong>
+              <p id="resultHorizon"></p>
+            </div>
+            <div class="result-box">
+              <strong>Siguiente paso sugerido</strong>
+              <p id="resultNextStep"></p>
+            </div>
+          </div>
+
+          <div class="result-cta-row">
+            <a href="index.html#contacto" class="btn btn-primary">Solicitar una consulta</a>
+            <a href="#test" class="btn btn-secondary" id="retakeTest">Rehacer test</a>
+          </div>
+
+          <div class="investor-disclaimer investor-disclaimer-result">
+            El resultado presentado es orientativo y no constituye una recomendación de inversión.
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="lead-modal" id="leadModal" aria-hidden="true">
+    <div class="lead-modal-backdrop" id="leadModalBackdrop"></div>
+    <div class="lead-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="leadModalTitle">
+      <button class="lead-modal-close" id="closeLeadModal" aria-label="Cerrar">×</button>
+
+      <div class="lead-modal-content">
+        <div class="eyebrow">Resultado</div>
+        <h3 id="leadModalTitle">Completá tus datos para ver tu perfil</h3>
+        <p>
+          Ingresá tus datos para acceder al resultado del test y recibir una orientación inicial.
+        </p>
+
+        <form id="leadForm" class="lead-form">
+          <div class="field-row">
+            <div>
+              <label for="leadName">Nombre *</label>
+              <input type="text" id="leadName" name="leadName" required />
+            </div>
+            <div>
+              <label for="leadEmail">Email *</label>
+              <input type="email" id="leadEmail" name="leadEmail" required />
+            </div>
+          </div>
+
+          <div>
+            <label for="leadWhatsapp">WhatsApp (opcional)</label>
+            <input type="text" id="leadWhatsapp" name="leadWhatsapp" />
+          </div>
+
+          <div class="lead-checkbox">
+            <label>
+              <input type="checkbox" id="leadConsent" required />
+              Acepto que RIO pueda contactarme para brindarme información relacionada con mi consulta.
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Ver resultado</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="perfil-inversor.js"></script>
+</body>
+</html>
