@@ -254,7 +254,7 @@ function initInvestorTest() {
         profile: profile.badge
       };
   
-      const scriptURL = "https://script.google.com/a/macros/lorenz.ar/s/AKfycbwL5UTqYXXl_5zuJ3zpU11mX9rPjYfwl-evcgt9GklE6iY2CHrxjLEn7cG3QUFjYWlm/exec";
+      const scriptURL = "https://script.google.com/macros/s/AKfycbwL5UTqYXXl_5zuJ3zpU11mX9rPjYfwl-evcgt9GklE6iY2CHrxjLEn7cG3QUFjYWlm/exec";
   
       if (statusEl) {
         statusEl.textContent = "Guardando tus datos...";
