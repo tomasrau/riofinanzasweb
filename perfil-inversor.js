@@ -244,6 +244,7 @@ function initInvestorTest() {
       if (score === null) return;
   
       const profile = getProfileByScore(score);
+      const statusEl = document.getElementById("leadFormStatus");
   
       const leadData = {
         name: document.getElementById("leadName")?.value.trim() || "",
@@ -254,6 +255,10 @@ function initInvestorTest() {
       };
   
       const scriptURL = "https://script.google.com/a/macros/lorenz.ar/s/AKfycbwL5UTqYXXl_5zuJ3zpU11mX9rPjYfwl-evcgt9GklE6iY2CHrxjLEn7cG3QUFjYWlm/exec";
+  
+      if (statusEl) {
+        statusEl.textContent = "Guardando tus datos...";
+      }
   
       try {
         const response = await fetch(scriptURL, {
@@ -266,12 +271,23 @@ function initInvestorTest() {
   
         const result = await response.json();
         console.log("Respuesta Apps Script:", result);
+  
+        if (statusEl) {
+          statusEl.textContent = "Datos guardados correctamente.";
+        }
+  
+        setTimeout(() => {
+          closeLeadModal();
+          renderResult(profile);
+        }, 400);
+  
       } catch (error) {
         console.error("Error al guardar lead:", error);
-      }
   
-      closeLeadModal();
-      renderResult(profile);
+        if (statusEl) {
+          statusEl.textContent = "No se pudieron guardar los datos. Podés intentar nuevamente.";
+        }
+      }
     });
   }
 
