@@ -5,57 +5,57 @@ const profiles = {
     badge: "Perfil Conservador",
     title: "Tu perfil es conservador",
     summary:
-      "Priorizás la preservación del capital, la estabilidad y la baja exposición a la volatilidad. Tu enfoque suele estar más orientado a proteger el patrimonio que a maximizar retorno.",
+      "Priorizás la estabilidad, la previsibilidad y el resguardo del capital. En general, te sentís más cómodo con decisiones que apunten a cuidar el dinero antes que a buscar grandes variaciones de rendimiento.",
     approach:
-      "Buscás previsibilidad, liquidez y menor variación en los resultados de corto plazo.",
+      "Tu forma de decidir suele estar orientada a la tranquilidad, la liquidez y el control del riesgo.",
     risk:
-      "Baja. Preferís minimizar movimientos bruscos y evitar pérdidas temporales relevantes.",
+      "Baja. Preferís evitar cambios bruscos en el valor de tus inversiones.",
     horizon:
-      "Corto a mediano plazo, con foco en resguardo y orden financiero.",
+      "Corto a mediano plazo, con foco en orden y preservación.",
     nextStep:
-      "Una conversación personalizada puede ayudarte a definir alternativas alineadas con preservación de capital y objetivos concretos."
+      "Una consulta puede ayudarte a identificar alternativas acordes a un perfil que prioriza resguardo, estabilidad y claridad."
   },
   moderado: {
     badge: "Perfil Moderado",
     title: "Tu perfil es moderado",
     summary:
-      "Valorás el equilibrio entre estabilidad y rendimiento. Estás dispuesto a asumir cierto nivel de volatilidad, siempre dentro de una estrategia razonable y controlada.",
+      "Buscás equilibrio entre seguridad y crecimiento. Podés aceptar cierto movimiento en el camino, siempre que tenga sentido dentro de una estrategia razonable y bien pensada.",
     approach:
-      "Buscás combinar orden patrimonial, liquidez y crecimiento gradual.",
+      "Valorás combinar estabilidad con oportunidades de mejora en el tiempo.",
     risk:
-      "Baja a media. Aceptás oscilaciones acotadas si el objetivo y la estrategia están bien definidos.",
+      "Baja a media. Tolerás cambios acotados si el objetivo está claro.",
     horizon:
-      "Mediano plazo, con foco en balance entre resguardo y crecimiento.",
+      "Mediano plazo, con búsqueda de balance entre cuidado y rendimiento.",
     nextStep:
-      "Una consulta puede ayudarte a estructurar una estrategia diversificada coherente con tu perfil y tu horizonte."
+      "Una conversación puede ayudarte a ordenar una estrategia diversificada, coherente con tus tiempos y tus objetivos."
   },
   equilibrado: {
     badge: "Perfil Equilibrado",
     title: "Tu perfil es equilibrado",
     summary:
-      "Tenés disposición a asumir riesgo de manera racional para buscar mejores resultados en el tiempo, manteniendo criterio y seguimiento.",
+      "Tenés disposición a asumir cierto nivel de riesgo para buscar crecimiento, pero sin perder de vista la necesidad de orden y seguimiento.",
     approach:
-      "Buscás crecimiento de capital con una asignación más dinámica, sin perder de vista la gestión del riesgo.",
+      "Te sentís cómodo con decisiones más dinámicas si están bien fundamentadas.",
     risk:
-      "Media. Tolerás volatilidad moderada si la estrategia tiene fundamentos.",
+      "Media. Podés tolerar fluctuaciones moderadas dentro de una estrategia consistente.",
     horizon:
-      "Mediano a largo plazo, con foco en crecimiento sostenido.",
+      "Mediano a largo plazo, con mayor foco en crecimiento sostenido.",
     nextStep:
-      "Una evaluación profesional puede ayudarte a definir una estrategia más precisa según objetivos, plazos y exposición deseada."
+      "Una evaluación profesional puede ayudarte a transformar ese perfil en una estrategia concreta, adaptada a tu situación."
   },
   agresivo: {
     badge: "Perfil Agresivo",
     title: "Tu perfil es agresivo",
     summary:
-      "Tenés mayor tolerancia al riesgo y una mirada orientada al crecimiento del capital, incluso aceptando volatilidad significativa en el corto plazo.",
+      "Tenés mayor tolerancia a la incertidumbre y estás dispuesto a atravesar variaciones importantes si eso puede traducirse en un mayor crecimiento a futuro.",
     approach:
-      "Priorizás retorno potencial y aceptás escenarios más variables si el horizonte y la oportunidad lo justifican.",
+      "Priorizás el potencial de crecimiento y aceptás escenarios más variables.",
     risk:
-      "Alta. Podés tolerar fluctuaciones importantes dentro de una estrategia con seguimiento.",
+      "Alta. Podés convivir con movimientos relevantes en el corto plazo.",
     horizon:
-      "Largo plazo, con mayor foco en apreciación de capital.",
+      "Largo plazo, con foco en apreciación de capital y tolerancia a la volatilidad.",
     nextStep:
-      "Una conversación personalizada puede ayudarte a ordenar ese perfil de riesgo dentro de una estrategia seria y bien estructurada."
+      "Una consulta puede ayudarte a canalizar esa mayor tolerancia al riesgo dentro de una estrategia seria y bien estructurada."
   }
 };
 
@@ -141,7 +141,8 @@ function validateTest() {
 
   for (let i = 1; i <= totalQuestions; i += 1) {
     const checked = document.querySelector(`input[name="q${i}"]:checked`);
-    const card = document.querySelector(`input[name="q${i}"]`)?.closest(".question-card");
+    const firstInput = document.querySelector(`input[name="q${i}"]`);
+    const card = firstInput ? firstInput.closest(".question-card") : null;
 
     if (!checked) {
       valid = false;
@@ -244,7 +245,6 @@ function initInvestorTest() {
 
       const profile = getProfileByScore(score);
 
-      // Acá más adelante podés conectar con Sheets / Apps Script / email / CRM
       const leadData = {
         name: document.getElementById("leadName")?.value.trim() || "",
         email: document.getElementById("leadEmail")?.value.trim() || "",
