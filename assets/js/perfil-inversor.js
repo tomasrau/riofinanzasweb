@@ -619,18 +619,29 @@ async function downloadResultPdf() {
 
     await waitForPdfRender();
 
+    const contentWidth = Math.ceil(sheet.scrollWidth);
+    const contentHeight = Math.ceil(sheet.scrollHeight);
+
+    host.style.width = `${contentWidth}px`;
+    host.style.minWidth = `${contentWidth}px`;
+    host.style.height = `${contentHeight}px`;
+
+    await waitForPdfRender();
+
     const options = {
-      margin: 0,
+      margin: [0, 0, 0, 0],
       filename: buildPdfFilename(data),
       image: { type: "jpeg", quality: 0.98 },
       html2canvas: {
         scale: 2,
         useCORS: true,
         backgroundColor: "#ffffff",
+        width: contentWidth,
+        height: contentHeight,
+        windowWidth: contentWidth,
+        windowHeight: contentHeight,
         scrollX: 0,
-        scrollY: 0,
-        windowWidth: 794,
-        windowHeight: sheet.scrollHeight || 1123
+        scrollY: 0
       },
       jsPDF: {
         unit: "mm",
@@ -638,7 +649,7 @@ async function downloadResultPdf() {
         orientation: "portrait"
       },
       pagebreak: {
-        mode: ["css", "legacy"]
+        mode: ["avoid-all", "css", "legacy"]
       }
     };
 
