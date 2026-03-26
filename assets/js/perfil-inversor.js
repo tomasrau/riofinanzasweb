@@ -78,10 +78,10 @@ const profiles = {
   }
 };
 
-function waitForPdfRender() {
+function waitForPdfRender(ms = 120) {
   return new Promise((resolve) => {
     requestAnimationFrame(() => {
-      requestAnimationFrame(resolve);
+      setTimeout(resolve, ms);
     });
   });
 }
@@ -448,6 +448,17 @@ function createPdfHost(templateHtml, templateCss) {
   host.className = "pdf-render-host";
   host.setAttribute("aria-hidden", "true");
 
+  host.style.position = "fixed";
+  host.style.top = "0";
+  host.style.left = "0";
+  host.style.width = "794px";
+  host.style.minWidth = "794px";
+  host.style.maxWidth = "794px";
+  host.style.background = "#ffffff";
+  host.style.zIndex = "-1";
+  host.style.pointerEvents = "none";
+  host.style.overflow = "visible";
+
   host.innerHTML = `
     <style>${templateCss}</style>
     ${templateHtml}
@@ -617,43 +628,87 @@ async function downloadResultPdf() {
       throw new Error("No se encontró el contenedor principal del PDF.");
     }
 
-    await waitForPdfRender();
+    await waitForPdfRender(180);
 
-    const contentWidth = Math.ceil(sheet.scrollWidth);
-    const contentHeight = Math.ceil(sheet.scrollHeight);
+    const sheetWidth = Math.round(sheet.getBoundingClientRect().width) || 794;
+    const sheetHeight = Math.round(sheet.scrollHeight);
 
-    host.style.width = `${contentWidth}px`;
-    host.style.minWidth = `${contentWidth}px`;
-    host.style.height = `${contentHeight}px`;
+    host.style.height = `${sheetHeight}px`;
 
-    await waitForPdfRender();
+    await waitForPdfRender(120);
 
-    const options = {
-      margin: [0, 0, 0, 0],
-      filename: buildPdfFilename(data),
-      image: { type: "jpeg", quality: 0.98 },
-      html2canvas: {
-        scale: 2,
-        useCORS: true,
-        backgroundColor: "#ffffff",
-        width: contentWidth,
-        height: contentHeight,
-        windowWidth: contentWidth,
-        windowHeight: contentHeight,
-        scrollX: 0,
-        scrollY: 0
-      },
-      jsPDF: {
-        unit: "mm",
-        format: "a4",
-        orientation: "portrait"
-      },
-      pagebreak: {
-        mode: ["avoid-all", "css", "legacy"]
+    const canvas = await html2canvas(sheet, {
+      scale: 2,
+      useCORS: true,
+      backgroundColor: "#ffffff",
+      width: sheetWidth,
+      height: sheetHeight,
+      windowWidth: sheetWidth,
+      windowHeight: sheetHeight,
+      scrollX: 0,
+      scrollY: 0,
+      logging: false,
+      onclone: (clonedDoc) => {
+        const clonedHost = clonedDoc.querySelector(".pdf-render-host");
+        const clonedSheet = clonedDoc.getElementById("investor-pdf-sheet");
+
+        if (clonedHost) {
+          clonedHost.style.position = "absolute";
+          clonedHost.style.top = "0";
+          clonedHost.style.left = "0";
+          clonedHost.style.width = `${sheetWidth}px`;
+          clonedHost.style.minWidth = `${sheetWidth}px`;
+          clonedHost.style.maxWidth = `${sheetWidth}px`;
+          clonedHost.style.height = "auto";
+          clonedHost.style.overflow = "visible";
+          clonedHost.style.zIndex = "1";
+          clonedHost.style.pointerEvents = "none";
+          clonedHost.style.background = "#ffffff";
+        }
+
+        if (clonedSheet) {
+          clonedSheet.style.width = `${sheetWidth}px`;
+          clonedSheet.style.minWidth = `${sheetWidth}px`;
+          clonedSheet.style.maxWidth = `${sheetWidth}px`;
+          clonedSheet.style.margin = "0";
+          clonedSheet.style.background = "#ffffff";
+        }
+
+        clonedDoc.body.style.margin = "0";
+        clonedDoc.body.style.padding = "0";
+        clonedDoc.body.style.background = "#ffffff";
       }
-    };
+    });
 
-    await html2pdf().set(options).from(sheet).save();
+    const imgData = canvas.toDataURL("image/jpeg", 0.98);
+    const { jsPDF } = window.jspdf;
+
+    const pdf = new jsPDF({
+      orientation: "portrait",
+      unit: "mm",
+      format: "a4"
+    });
+
+    const pageWidth = 210;
+    const pageHeight = 297;
+
+    const imgWidth = pageWidth;
+    const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+    let heightLeft = imgHeight;
+    let position = 0;
+
+    pdf.addImage(imgData, "JPEG", 0, position, imgWidth, imgHeight);
+    heightLeft -= pageHeight;
+
+    while (heightLeft > 0) {
+      position = heightLeft - imgHeight;
+      pdf.addPage();
+      pdf.addImage(imgData, "JPEG", 0, position, imgWidth, imgHeight);
+      heightLeft -= pageHeight;
+    }
+
+    pdf.save(buildPdfFilename(data));
   } finally {
     host.remove();
   }
