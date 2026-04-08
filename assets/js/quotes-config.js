@@ -3,7 +3,7 @@ window.RIO_QUOTES_CONFIG = {
       blue: {
         label: "Blue RIO",
         compra: 1375,
-        venta: 1410
+        venta: 1405
       }
     }
   };
