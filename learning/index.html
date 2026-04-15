@@ -48,26 +48,43 @@
     </div>
   </header>
 
-  <section class="learning-launch-bar">
+  <section class="learning-promo-bar">
     <div class="container">
-      <div class="learning-launch-bar-inner">
-        <div class="learning-launch-copy">
-          <span class="learning-launch-badge">20% OFF · Preventa lanzamiento</span>
-          <p>
+      <div class="learning-promo-bar__inner">
+        <div class="learning-promo-bar__left">
+          <span class="learning-promo-bar__badge">Preventa · 20% OFF lanzamiento</span>
+          <p class="learning-promo-bar__text">
             Precio especial disponible hasta el webinar o hasta completar los cupos de esta edición.
           </p>
         </div>
 
-        <div class="learning-launch-meta">
-          <span class="learning-launch-meta-item">
+        <div class="learning-promo-bar__right">
+          <div class="learning-promo-bar__seats">
             <span class="learning-live-dot"></span>
-            <strong><span data-seats-count>18</span> cupos disponibles</strong>
-          </span>
-          <span class="learning-launch-divider"></span>
-          <span class="learning-launch-meta-item">Jueves 21 de Mayo · 19:00hs</span>
-        </div>
+            <span>Quedan <strong><span data-seats-count>18</span> cupos</strong></span>
+          </div>
 
-        <a href="#comprar" class="btn btn-primary learning-launch-cta">Aprovechar preventa</a>
+          <div class="learning-promo-bar__countdown">
+            <span class="learning-promo-bar__count-item">
+              <strong data-countdown="days">00</strong>
+              <small>d</small>
+            </span>
+            <span class="learning-promo-bar__count-item">
+              <strong data-countdown="hours">00</strong>
+              <small>h</small>
+            </span>
+            <span class="learning-promo-bar__count-item">
+              <strong data-countdown="minutes">00</strong>
+              <small>m</small>
+            </span>
+            <span class="learning-promo-bar__count-item">
+              <strong data-countdown="seconds">00</strong>
+              <small>s</small>
+            </span>
+          </div>
+
+          <a href="#comprar" class="btn btn-primary learning-promo-bar__cta">Aprovechar preventa</a>
+        </div>
       </div>
     </div>
   </section>
@@ -107,7 +124,9 @@
 
             <div class="learning-inline-offer">
               <span class="learning-inline-offer-badge">Preventa 20% OFF</span>
-              <span class="learning-inline-offer-text">Precio lanzamiento para esta edición del webinar.</span>
+              <span class="learning-inline-offer-text">
+                Precio lanzamiento para esta edición del webinar.
+              </span>
             </div>
 
             <div class="btn-row">
@@ -356,28 +375,6 @@
               <span>Quedan <strong><span data-seats-count>18</span> cupos disponibles</strong></span>
             </div>
 
-            <div class="learning-checkout-countdown">
-              <div class="learning-checkout-countdown-title">Tiempo restante</div>
-              <div class="learning-checkout-countdown-grid">
-                <div class="learning-checkout-countdown-unit">
-                  <span class="learning-checkout-countdown-value" data-countdown="days">00</span>
-                  <span class="learning-checkout-countdown-label">D</span>
-                </div>
-                <div class="learning-checkout-countdown-unit">
-                  <span class="learning-checkout-countdown-value" data-countdown="hours">00</span>
-                  <span class="learning-checkout-countdown-label">H</span>
-                </div>
-                <div class="learning-checkout-countdown-unit">
-                  <span class="learning-checkout-countdown-value" data-countdown="minutes">00</span>
-                  <span class="learning-checkout-countdown-label">M</span>
-                </div>
-                <div class="learning-checkout-countdown-unit">
-                  <span class="learning-checkout-countdown-value" data-countdown="seconds">00</span>
-                  <span class="learning-checkout-countdown-label">S</span>
-                </div>
-              </div>
-            </div>
-
             <a
               href="__PEGAR_LINK_MERCADOPAGO__"
               class="btn btn-primary offer-buy-btn"
@@ -455,49 +452,45 @@
     </section>
   </main>
 
-  <aside class="learning-conversion-dock" id="learningConversionDock" aria-label="Oferta webinar">
-    <div class="learning-conversion-dock-top">
-      <span class="learning-conversion-dock-badge">20% OFF</span>
-      <span class="learning-conversion-dock-status">
+  <aside class="learning-sales-dock" aria-label="Oferta webinar">
+    <div class="learning-sales-dock__top">
+      <span class="learning-sales-dock__badge">20% OFF</span>
+      <span class="learning-sales-dock__status">
         <span class="learning-live-dot"></span>
         Preventa activa
       </span>
     </div>
 
-    <div class="learning-conversion-dock-price-wrap">
-      <span class="learning-conversion-dock-old-price">$68.750.-</span>
-      <span class="learning-conversion-dock-price">$54.999.-</span>
+    <div class="learning-sales-dock__price-wrap">
+      <span class="learning-sales-dock__old-price">$68.750.-</span>
+      <span class="learning-sales-dock__price">$54.999.-</span>
     </div>
 
-    <div class="learning-conversion-dock-countdown">
-      <div class="learning-conversion-dock-unit">
-        <span class="learning-conversion-dock-value" data-countdown="days">00</span>
-        <span class="learning-conversion-dock-label">DÍAS</span>
+    <div class="learning-sales-dock__countdown">
+      <div class="learning-sales-dock__unit">
+        <span class="learning-sales-dock__value" data-countdown="days">00</span>
+        <span class="learning-sales-dock__label">DÍAS</span>
       </div>
-      <div class="learning-conversion-dock-unit">
-        <span class="learning-conversion-dock-value" data-countdown="hours">00</span>
-        <span class="learning-conversion-dock-label">HORAS</span>
+      <div class="learning-sales-dock__unit">
+        <span class="learning-sales-dock__value" data-countdown="hours">00</span>
+        <span class="learning-sales-dock__label">HORAS</span>
       </div>
-      <div class="learning-conversion-dock-unit">
-        <span class="learning-conversion-dock-value" data-countdown="minutes">00</span>
-        <span class="learning-conversion-dock-label">MIN</span>
+      <div class="learning-sales-dock__unit">
+        <span class="learning-sales-dock__value" data-countdown="minutes">00</span>
+        <span class="learning-sales-dock__label">MIN</span>
       </div>
-      <div class="learning-conversion-dock-unit">
-        <span class="learning-conversion-dock-value" data-countdown="seconds">00</span>
-        <span class="learning-conversion-dock-label">SEG</span>
+      <div class="learning-sales-dock__unit">
+        <span class="learning-sales-dock__value" data-countdown="seconds">00</span>
+        <span class="learning-sales-dock__label">SEG</span>
       </div>
     </div>
 
-    <div class="learning-conversion-dock-seats">
+    <div class="learning-sales-dock__seats">
       <span class="learning-live-dot"></span>
       <span>Quedan <strong><span data-seats-count>18</span> cupos</strong></span>
     </div>
 
-    <a
-      href="#comprar"
-      class="btn btn-primary learning-conversion-dock-btn"
-      aria-label="Comprar acceso al webinar"
-    >
+    <a href="#comprar" class="btn btn-primary learning-sales-dock__btn">
       Comprar acceso
     </a>
   </aside>
