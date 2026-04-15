@@ -48,6 +48,30 @@
     </div>
   </header>
 
+  <section class="learning-launch-bar">
+    <div class="container">
+      <div class="learning-launch-bar-inner">
+        <div class="learning-launch-copy">
+          <span class="learning-launch-badge">20% OFF · Preventa lanzamiento</span>
+          <p>
+            Precio especial disponible hasta el webinar o hasta completar los cupos de esta edición.
+          </p>
+        </div>
+
+        <div class="learning-launch-meta">
+          <span class="learning-launch-meta-item">
+            <span class="learning-live-dot"></span>
+            <strong><span data-seats-count>18</span> cupos disponibles</strong>
+          </span>
+          <span class="learning-launch-divider"></span>
+          <span class="learning-launch-meta-item">Jueves 21 de Mayo · 19:00hs</span>
+        </div>
+
+        <a href="#comprar" class="btn btn-primary learning-launch-cta">Aprovechar preventa</a>
+      </div>
+    </div>
+  </section>
+
   <main class="learning-page">
     <section class="learning-hero">
       <div class="container">
@@ -81,51 +105,9 @@
               </div>
             </div>
 
-            <div class="learning-signals-grid reveal">
-              <div class="learning-countdown-card">
-                <div class="learning-signal-top">
-                  <span class="learning-signal-kicker">Preventa activa</span>
-                  <span class="learning-signal-badge">20% OFF lanzamiento</span>
-                </div>
-
-                <div class="learning-countdown-title">El webinar comienza en</div>
-
-                <div class="learning-countdown-grid">
-                  <div class="learning-countdown-unit">
-                    <span class="learning-countdown-value" data-countdown="days">00</span>
-                    <span class="learning-countdown-label">Días</span>
-                  </div>
-                  <div class="learning-countdown-unit">
-                    <span class="learning-countdown-value" data-countdown="hours">00</span>
-                    <span class="learning-countdown-label">Horas</span>
-                  </div>
-                  <div class="learning-countdown-unit">
-                    <span class="learning-countdown-value" data-countdown="minutes">00</span>
-                    <span class="learning-countdown-label">Min</span>
-                  </div>
-                  <div class="learning-countdown-unit">
-                    <span class="learning-countdown-value" data-countdown="seconds">00</span>
-                    <span class="learning-countdown-label">Seg</span>
-                  </div>
-                </div>
-              </div>
-
-              <div class="learning-seats-card">
-                <div class="learning-signal-top">
-                  <span class="learning-signal-kicker">
-                    <span class="learning-live-dot"></span>
-                    Cupos limitados
-                  </span>
-                </div>
-
-                <div class="learning-seats-count">
-                  Quedan <strong><span data-seats-count>18</span> cupos disponibles</strong>
-                </div>
-
-                <p class="learning-seats-text">
-                  Edición en vivo con espacio real para preguntas e interacción.
-                </p>
-              </div>
+            <div class="learning-inline-offer">
+              <span class="learning-inline-offer-badge">Preventa 20% OFF</span>
+              <span class="learning-inline-offer-text">Precio lanzamiento para esta edición del webinar.</span>
             </div>
 
             <div class="btn-row">
@@ -473,18 +455,52 @@
     </section>
   </main>
 
-  <a
-    href="#comprar"
-    class="learning-floating-cta"
-    id="learningFloatingCta"
-    aria-label="Comprar acceso al webinar"
-  >
-    <span class="learning-floating-copy">
-      <span class="learning-floating-tag">20% OFF</span>
-      <span class="learning-floating-text">Reservar mi lugar</span>
-    </span>
-    <span class="learning-floating-price">$54.999.-</span>
-  </a>
+  <aside class="learning-conversion-dock" id="learningConversionDock" aria-label="Oferta webinar">
+    <div class="learning-conversion-dock-top">
+      <span class="learning-conversion-dock-badge">20% OFF</span>
+      <span class="learning-conversion-dock-status">
+        <span class="learning-live-dot"></span>
+        Preventa activa
+      </span>
+    </div>
+
+    <div class="learning-conversion-dock-price-wrap">
+      <span class="learning-conversion-dock-old-price">$68.750.-</span>
+      <span class="learning-conversion-dock-price">$54.999.-</span>
+    </div>
+
+    <div class="learning-conversion-dock-countdown">
+      <div class="learning-conversion-dock-unit">
+        <span class="learning-conversion-dock-value" data-countdown="days">00</span>
+        <span class="learning-conversion-dock-label">DÍAS</span>
+      </div>
+      <div class="learning-conversion-dock-unit">
+        <span class="learning-conversion-dock-value" data-countdown="hours">00</span>
+        <span class="learning-conversion-dock-label">HORAS</span>
+      </div>
+      <div class="learning-conversion-dock-unit">
+        <span class="learning-conversion-dock-value" data-countdown="minutes">00</span>
+        <span class="learning-conversion-dock-label">MIN</span>
+      </div>
+      <div class="learning-conversion-dock-unit">
+        <span class="learning-conversion-dock-value" data-countdown="seconds">00</span>
+        <span class="learning-conversion-dock-label">SEG</span>
+      </div>
+    </div>
+
+    <div class="learning-conversion-dock-seats">
+      <span class="learning-live-dot"></span>
+      <span>Quedan <strong><span data-seats-count>18</span> cupos</strong></span>
+    </div>
+
+    <a
+      href="#comprar"
+      class="btn btn-primary learning-conversion-dock-btn"
+      aria-label="Comprar acceso al webinar"
+    >
+      Comprar acceso
+    </a>
+  </aside>
 
   <script src="/assets/js/learning.js"></script>
 </body>
