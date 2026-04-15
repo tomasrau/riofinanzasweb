@@ -48,7 +48,7 @@ function initRevealAnimations() {
 
 function initLearningOfferSignals() {
   const eventDate = new Date("2026-05-21T19:00:00-03:00").getTime();
-  const availableSeats = 18; // Ajustar manualmente con disponibilidad real
+  const availableSeats = 18;
 
   document.querySelectorAll("[data-seats-count]").forEach((el) => {
     el.textContent = availableSeats;
