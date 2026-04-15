@@ -1,830 +1,96 @@
-.learning-page {
-  background: #ffffff;
-}
-
-.nav-link-active {
-  color: var(--primary);
-}
-
-.nav-learning {
-  min-height: 88px;
-  gap: 18px;
-}
-
-.nav-links-learning {
-  gap: 18px;
-  font-size: 0.95rem;
-}
-
-.nav-actions-learning {
-  flex-shrink: 0;
-}
-
-.learning-launch-bar {
-  position: sticky;
-  top: 88px;
-  z-index: 45;
-  background: linear-gradient(90deg, #0b1227 0%, #101938 100%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.learning-launch-bar-inner {
-  min-height: 64px;
-  display: grid;
-  grid-template-columns: 1.1fr auto auto;
-  gap: 18px;
-  align-items: center;
-  padding: 10px 0;
-}
-
-.learning-launch-copy {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.learning-launch-copy p {
-  margin: 0;
-  color: rgba(255, 255, 255, 0.82);
-  font-size: 0.94rem;
-}
-
-.learning-launch-badge {
-  display: inline-flex;
-  align-items: center;
-  padding: 8px 12px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.12);
-  color: #ffffff;
-  font-size: 0.78rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  white-space: nowrap;
-}
-
-.learning-launch-meta {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  color: rgba(255, 255, 255, 0.88);
-  font-size: 0.9rem;
-}
-
-.learning-launch-meta-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  white-space: nowrap;
-}
-
-.learning-launch-divider {
-  width: 1px;
-  height: 18px;
-  background: rgba(255, 255, 255, 0.18);
-}
-
-.learning-launch-cta {
-  white-space: nowrap;
-}
-
-.learning-hero {
-  padding: 54px 0 42px;
-  background:
-    radial-gradient(circle at top right, rgba(24, 0, 173, 0.07), transparent 28%),
-    radial-gradient(circle at 8% 20%, rgba(24, 0, 173, 0.05), transparent 20%),
-    #fff;
-}
-
-.learning-hero-grid {
-  display: grid;
-  grid-template-columns: 1.08fr 0.92fr;
-  gap: 28px;
-  align-items: start;
-}
-
-.learning-hero-copy h1 {
-  margin: 16px 0 14px;
-  font-size: clamp(2.5rem, 5vw, 4.7rem);
-  line-height: 0.97;
-  letter-spacing: -0.05em;
-}
-
-.learning-hero-subtitle {
-  margin: 0 0 24px;
-  color: var(--muted);
-  font-size: 1.08rem;
-  max-width: 700px;
-}
-
-.learning-meta-row {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 14px;
-  margin: 0 0 18px;
-}
-
-.learning-meta-card {
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 16px;
-  background: #fff;
-  box-shadow: 0 10px 20px rgba(17, 24, 39, 0.04);
-}
-
-.learning-meta-label {
-  display: block;
-  margin-bottom: 6px;
-  color: var(--muted);
-  font-size: 0.86rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.learning-meta-card strong {
-  font-size: 1rem;
-  letter-spacing: -0.02em;
-}
-
-.learning-inline-offer {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  margin: 0 0 24px;
-  padding: 12px 14px;
-  border: 1px solid rgba(24, 0, 173, 0.1);
-  border-radius: 16px;
-  background: linear-gradient(180deg, #ffffff 0%, #f8f9ff 100%);
-}
-
-.learning-inline-offer-badge {
-  display: inline-flex;
-  align-items: center;
-  padding: 7px 10px;
-  border-radius: 999px;
-  background: var(--primary-soft);
-  color: var(--primary);
-  font-size: 0.76rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  white-space: nowrap;
-}
-
-.learning-inline-offer-text {
-  color: #1f2937;
-  font-size: 0.92rem;
-  font-weight: 600;
-}
-
-.learning-proof {
-  margin-top: 22px;
-}
-
-.learning-live-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 999px;
-  background: #ef4444;
-  box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.55);
-  animation: pulseDot 1.8s infinite;
-  flex: 0 0 10px;
-}
-
-@keyframes pulseDot {
-  0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.45); }
-  70% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
-}
-
-.learning-hero-card {
-  position: relative;
-  border: 1px solid rgba(24, 0, 173, 0.12);
-  border-radius: 28px;
-  padding: 28px;
-  background: #fff;
-  box-shadow: var(--shadow-lg);
-  overflow: hidden;
-}
-
-.learning-offer-ribbon {
-  display: inline-flex;
-  align-items: center;
-  padding: 9px 13px;
-  border-radius: 999px;
-  background: linear-gradient(135deg, rgba(24, 0, 173, 0.1), rgba(24, 0, 173, 0.04));
-  color: var(--primary);
-  font-size: 0.82rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 16px;
-}
-
-.learning-price-wrap {
-  margin-bottom: 18px;
-}
-
-.learning-price-label {
-  color: var(--muted);
-  font-size: 0.92rem;
-  margin-bottom: 6px;
-}
-
-.learning-price-anchor {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
-}
-
-.learning-price-old {
-  font-size: 1.08rem;
-  color: #6b7280;
-  text-decoration: line-through;
-  text-decoration-thickness: 2px;
-}
-
-.learning-discount-badge {
-  display: inline-flex;
-  align-items: center;
-  padding: 7px 10px;
-  border-radius: 999px;
-  background: #111827;
-  color: #fff;
-  font-size: 0.74rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.learning-price {
-  font-size: clamp(2.5rem, 5vw, 3.8rem);
-  line-height: 1;
-  font-weight: 900;
-  letter-spacing: -0.05em;
-  color: var(--primary);
-}
-
-.learning-price-note {
-  margin-top: 8px;
-  color: var(--muted);
-  font-size: 0.94rem;
-}
-
-.learning-mini-proof {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-  margin-bottom: 18px;
-}
-
-.learning-mini-proof-item {
-  border: 1px solid #edf0f6;
-  border-radius: 18px;
-  padding: 14px;
-  background: var(--bg-soft);
-}
-
-.learning-mini-proof-label {
-  display: block;
-  margin-bottom: 5px;
-  color: var(--muted);
-  font-size: 0.82rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.learning-mini-proof-item strong {
-  font-size: 1rem;
-  letter-spacing: -0.02em;
-}
-
-.learning-check-list {
-  margin: 0 0 22px;
-  padding: 0;
-  list-style: none;
-  display: grid;
-  gap: 12px;
-}
-
-.learning-check-list li {
-  position: relative;
-  padding-left: 28px;
-  color: #1f2937;
-  font-weight: 500;
-  line-height: 1.55;
-}
-
-.learning-check-list li::before {
-  content: "✓";
-  position: absolute;
-  left: 0;
-  top: 0;
-  color: var(--primary);
-  font-weight: 800;
-}
-
-.learning-buy-btn {
-  width: 100%;
-}
-
-.learning-buy-note {
-  margin: 14px 0 0;
-  color: var(--muted);
-  font-size: 0.9rem;
-  line-height: 1.6;
-}
-
-.learning-section-head {
-  margin-bottom: 32px;
-}
-
-.learning-problem-grid,
-.learning-value-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-}
-
-.problem-card,
-.value-card {
-  border: 1px solid var(--border);
-  border-radius: 24px;
-  padding: 24px;
-  background: #fff;
-  box-shadow: 0 12px 24px rgba(17, 24, 39, 0.04);
-}
-
-.problem-card h3,
-.value-card h3 {
-  margin: 0 0 10px;
-  font-size: 1.18rem;
-  letter-spacing: -0.02em;
-}
-
-.problem-card p,
-.value-card p {
-  margin: 0;
-  color: var(--muted);
-  line-height: 1.65;
-}
-
-.value-number {
-  width: 46px;
-  height: 46px;
-  display: grid;
-  place-items: center;
-  border-radius: 14px;
-  background: var(--primary-soft);
-  color: var(--primary);
-  font-weight: 900;
-  margin-bottom: 16px;
-}
-
-.learning-content-list {
-  display: grid;
-  gap: 14px;
-}
-
-.content-item {
-  display: grid;
-  grid-template-columns: 130px 1fr;
-  gap: 20px;
-  border: 1px solid var(--border);
-  border-radius: 24px;
-  padding: 22px;
-  background: #fff;
-  box-shadow: 0 10px 22px rgba(17, 24, 39, 0.04);
-}
-
-.content-step {
-  display: inline-flex;
-  align-items: flex-start;
-  font-size: 0.9rem;
-  font-weight: 800;
-  color: var(--primary);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.content-body h3 {
-  margin: 0 0 8px;
-  font-size: 1.16rem;
-  letter-spacing: -0.02em;
-}
-
-.content-body p {
-  margin: 0;
-  color: var(--muted);
-  line-height: 1.65;
-}
-
-.audience-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 18px;
-}
-
-.audience-card {
-  border: 1px solid var(--border);
-  border-radius: 26px;
-  padding: 26px;
-  background: #fff;
-  box-shadow: 0 12px 24px rgba(17, 24, 39, 0.04);
-}
-
-.audience-card-alt {
-  background: var(--bg-soft);
-}
-
-.audience-list {
-  margin: 16px 0 0;
-  padding-left: 18px;
-  display: grid;
-  gap: 10px;
-  color: var(--muted);
-}
-
-.offer-card {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 28px;
-  border-radius: 30px;
-  padding: 30px;
-  background: linear-gradient(180deg, #ffffff 0%, #f8f9ff 100%);
-  border: 1px solid rgba(24, 0, 173, 0.08);
-  box-shadow: var(--shadow-lg);
-}
-
-.offer-feature-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 14px;
-  margin-top: 24px;
-}
-
-.offer-feature {
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 16px;
-  background: #fff;
-}
-
-.offer-feature strong {
-  display: block;
-  margin-bottom: 6px;
-}
-
-.offer-feature span {
-  color: var(--muted);
-  font-size: 0.94rem;
-}
-
-.offer-checkout {
-  border-radius: 24px;
-  background: var(--primary);
-  color: #fff;
-  padding: 26px;
-  box-shadow: 0 18px 40px rgba(24, 0, 173, 0.18);
-}
-
-.learning-checkout-promo {
-  margin-bottom: 14px;
-}
-
-.learning-checkout-tag {
-  display: inline-flex;
-  align-items: center;
-  padding: 7px 10px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.14);
-  color: #fff;
-  font-size: 0.76rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 10px;
-}
-
-.learning-checkout-old-price {
-  color: rgba(255, 255, 255, 0.7);
-  text-decoration: line-through;
-  text-decoration-thickness: 2px;
-  font-size: 1rem;
-}
-
-.offer-price-label {
-  color: rgba(255, 255, 255, 0.74);
-  font-size: 0.88rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 8px;
-}
-
-.offer-price {
-  font-size: clamp(2.3rem, 5vw, 3.5rem);
-  line-height: 1;
-  font-weight: 900;
-  letter-spacing: -0.05em;
-}
-
-.offer-date {
-  margin-top: 10px;
-  color: rgba(255, 255, 255, 0.86);
-  font-size: 1rem;
-}
-
-.learning-checkout-seats {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 16px;
-  padding: 12px 14px;
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.08);
-  color: rgba(255, 255, 255, 0.94);
-  font-size: 0.94rem;
-}
-
-.learning-checkout-countdown {
-  margin-top: 16px;
-  padding: 16px;
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.08);
-}
-
-.learning-checkout-countdown-title {
-  margin-bottom: 10px;
-  font-size: 0.88rem;
-  font-weight: 700;
-  color: rgba(255, 255, 255, 0.84);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.learning-checkout-countdown-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
-}
-
-.learning-checkout-countdown-unit {
-  padding: 10px 8px;
-  border-radius: 14px;
-  text-align: center;
-  background: rgba(255, 255, 255, 0.08);
-}
-
-.learning-checkout-countdown-value {
-  display: block;
-  font-size: 1.1rem;
-  font-weight: 900;
-  line-height: 1;
-  margin-bottom: 4px;
-  color: #fff;
-}
-
-.learning-checkout-countdown-label {
-  display: block;
-  font-size: 0.68rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: rgba(255, 255, 255, 0.72);
-}
-
-.offer-buy-btn {
-  width: 100%;
-  margin-top: 22px;
-  background: #fff;
-  color: var(--primary);
-  border-color: #fff;
-  box-shadow: none;
-}
-
-.offer-buy-btn:hover {
-  background: #eef0ff;
-}
-
-.offer-security-note {
-  margin-top: 14px;
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.8);
-  line-height: 1.6;
-}
-
-.learning-conversion-dock {
-  position: fixed;
-  right: 18px;
-  bottom: 18px;
-  z-index: 80;
-  width: min(360px, calc(100vw - 32px));
-  padding: 16px;
-  border-radius: 24px;
-  background: linear-gradient(180deg, #0b1227 0%, #111938 100%);
-  color: #fff;
-  box-shadow: 0 24px 60px rgba(5, 10, 25, 0.35);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.learning-conversion-dock-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 14px;
-}
-
-.learning-conversion-dock-badge {
-  display: inline-flex;
-  align-items: center;
-  padding: 7px 10px;
-  border-radius: 999px;
-  background: rgba(88, 77, 255, 0.22);
-  color: #ffffff;
-  font-size: 0.74rem;
-  font-weight: 900;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
-.learning-conversion-dock-status {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.84rem;
-  color: rgba(255, 255, 255, 0.82);
-  font-weight: 700;
-}
-
-.learning-conversion-dock-price-wrap {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  margin-bottom: 14px;
-}
-
-.learning-conversion-dock-old-price {
-  font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.58);
-  text-decoration: line-through;
-  text-decoration-thickness: 2px;
-}
-
-.learning-conversion-dock-price {
-  font-size: 2rem;
-  line-height: 1;
-  font-weight: 900;
-  letter-spacing: -0.05em;
-  color: #ffffff;
-}
-
-.learning-conversion-dock-countdown {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
-  margin-bottom: 14px;
-}
-
-.learning-conversion-dock-unit {
-  padding: 12px 8px;
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.08);
-  text-align: center;
-}
-
-.learning-conversion-dock-value {
-  display: block;
-  font-size: 1.06rem;
-  font-weight: 900;
-  line-height: 1;
-  margin-bottom: 5px;
-  color: #ffffff;
-}
-
-.learning-conversion-dock-label {
-  display: block;
-  font-size: 0.64rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: rgba(255, 255, 255, 0.64);
-}
-
-.learning-conversion-dock-seats {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 14px;
-  padding: 12px 14px;
-  border-radius: 16px;
-  background: rgba(239, 68, 68, 0.12);
-  color: rgba(255, 255, 255, 0.94);
-  font-size: 0.94rem;
-  font-weight: 600;
-}
-
-.learning-conversion-dock-btn {
-  width: 100%;
-}
-
-@media (max-width: 1200px) {
-  .nav-links-learning {
-    gap: 14px;
-    font-size: 0.92rem;
-  }
-}
-
-@media (max-width: 1024px) {
-  .learning-launch-bar-inner,
-  .learning-hero-grid,
-  .offer-card,
-  .audience-grid {
-    grid-template-columns: 1fr;
+function initLearningMobileMenu() {
+  const menuToggle = document.getElementById("menuToggle");
+  const mobileMenu = document.getElementById("mobileMenu");
+
+  if (menuToggle && mobileMenu) {
+    menuToggle.addEventListener("click", () => {
+      mobileMenu.style.display =
+        mobileMenu.style.display === "grid" ? "none" : "grid";
+    });
   }
 
-  .learning-meta-row,
-  .learning-problem-grid,
-  .learning-value-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .learning-launch-meta {
-    flex-wrap: wrap;
-  }
+  document.querySelectorAll(".mobile-menu a").forEach((link) => {
+    link.addEventListener("click", () => {
+      if (mobileMenu) mobileMenu.style.display = "none";
+    });
+  });
 }
 
-@media (max-width: 900px) {
-  .nav-links-learning,
-  .nav-actions-learning .btn-secondary {
-    display: none;
-  }
+function initLearningFaq() {
+  const faqItems = document.querySelectorAll(".faq-item");
+
+  faqItems.forEach((item) => {
+    const btn = item.querySelector(".faq-question");
+    if (!btn) return;
+
+    btn.addEventListener("click", () => {
+      const isActive = item.classList.contains("active");
+      faqItems.forEach((el) => el.classList.remove("active"));
+      if (!isActive) item.classList.add("active");
+    });
+  });
 }
 
-@media (max-width: 820px) {
-  .learning-launch-bar {
-    top: 72px;
-  }
+function initRevealAnimations() {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    },
+    { threshold: 0.12 }
+  );
 
-  .learning-launch-bar-inner {
-    gap: 10px;
-    padding: 12px 0;
-  }
-
-  .learning-launch-copy {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-  }
-
-  .learning-launch-copy p {
-    font-size: 0.88rem;
-  }
-
-  .learning-launch-divider {
-    display: none;
-  }
-
-  .learning-launch-meta {
-    gap: 10px;
-    font-size: 0.84rem;
-  }
-
-  .learning-hero {
-    padding-top: 34px;
-  }
-
-  .learning-meta-row,
-  .learning-problem-grid,
-  .learning-value-grid,
-  .offer-feature-grid,
-  .learning-mini-proof,
-  .learning-checkout-countdown-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .content-item {
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
-
-  .learning-conversion-dock {
-    left: 12px;
-    right: 12px;
-    bottom: 12px;
-    width: auto;
-    padding: 14px;
-    border-radius: 20px;
-  }
-
-  .learning-conversion-dock-top {
-    margin-bottom: 10px;
-  }
-
-  .learning-conversion-dock-price {
-    font-size: 1.7rem;
-  }
-
-  .learning-conversion-dock-countdown {
-    grid-template-columns: repeat(4, 1fr);
-  }
+  document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
 }
+
+function initLearningOfferSignals() {
+  const eventDate = new Date("2026-05-21T19:00:00-03:00").getTime();
+  const availableSeats = 18;
+
+  document.querySelectorAll("[data-seats-count]").forEach((el) => {
+    el.textContent = availableSeats;
+  });
+
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = eventDate - now;
+
+    let days = 0;
+    let hours = 0;
+    let minutes = 0;
+    let seconds = 0;
+
+    if (distance > 0) {
+      days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+      minutes = Math.floor((distance / (1000 * 60)) % 60);
+      seconds = Math.floor((distance / 1000) % 60);
+    }
+
+    const values = {
+      days: String(days).padStart(2, "0"),
+      hours: String(hours).padStart(2, "0"),
+      minutes: String(minutes).padStart(2, "0"),
+      seconds: String(seconds).padStart(2, "0"),
+    };
+
+    Object.entries(values).forEach(([unit, value]) => {
+      document.querySelectorAll(`[data-countdown="${unit}"]`).forEach((el) => {
+        el.textContent = value;
+      });
+    });
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  initLearningMobileMenu();
+  initLearningFaq();
+  initRevealAnimations();
+  initLearningOfferSignals();
+});
