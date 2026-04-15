@@ -46,8 +46,51 @@ function initRevealAnimations() {
   document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
 }
 
+function initLearningOfferSignals() {
+  const eventDate = new Date("2026-05-21T19:00:00-03:00").getTime();
+  const availableSeats = 18; // Ajustar manualmente con disponibilidad real
+
+  document.querySelectorAll("[data-seats-count]").forEach((el) => {
+    el.textContent = availableSeats;
+  });
+
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = eventDate - now;
+
+    let days = 0;
+    let hours = 0;
+    let minutes = 0;
+    let seconds = 0;
+
+    if (distance > 0) {
+      days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+      minutes = Math.floor((distance / (1000 * 60)) % 60);
+      seconds = Math.floor((distance / 1000) % 60);
+    }
+
+    const values = {
+      days: String(days).padStart(2, "0"),
+      hours: String(hours).padStart(2, "0"),
+      minutes: String(minutes).padStart(2, "0"),
+      seconds: String(seconds).padStart(2, "0"),
+    };
+
+    Object.entries(values).forEach(([unit, value]) => {
+      document.querySelectorAll(`[data-countdown="${unit}"]`).forEach((el) => {
+        el.textContent = value;
+      });
+    });
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initLearningMobileMenu();
   initLearningFaq();
   initRevealAnimations();
+  initLearningOfferSignals();
 });
